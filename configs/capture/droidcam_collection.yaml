@@ -1,0 +1,194 @@
+# Clean real-data collection (started 2026-10-06): phone as a LIVE camera (DroidCam), GOOD / FAULT PCB only.
+#
+#   python scripts/collect.py
+#
+# Purpose of this phase: CLEAN REAL DATA COLLECTION + CLEAN PCB CROPPING / ALIGNMENT + GOOD / FAULT DATASET.
+# No synthetic images, no old data, no TEST collection (added later), no model training, no PASS / FAIL.
+#
+# Store (product profile configs/products/lg_indicator/product.yaml, storage.acquisition_root + storage.layout):
+#   data/collection/originals/<good|fault>/<board>/<session>/   session.json, images/ (originals), pcb/ (PCB images)
+#   data/collection/good/<GOOD_###>/<session>/                  KEEP (original + PCB image, verified copies)
+#   data/collection/fault/<FAULT_###>/<session>/                KEEP
+#   data/collection/quarantine/<good|fault>/<board>/<session>/  REJECT
+#
+# Guide: docs/clean_data_collection.md
+# null = UNKNOWN. Values marked PROVISIONAL are starting points, not validated limits.
+
+capture_config_id: droidcam_collection
+purpose: clean_real_data_collection      # prototype camera, not production imaging
+product: lg_indicator                     # default product (python scripts/collect.py --product <id>)
+dataset_types: [good, fault]             # TEST PCB is NOT collected in this phase
+window_title: "PCB Clean Data Collection - GOOD / FAULT"
+
+device:
+  type: mobile_phone_live_camera
+  model: "Xiaomi Redmi 12 5G"     # stated by the project team (2026-10-05)
+  connection: DroidCam
+
+camera:                           # same camera settings as configs/capture/droidcam_e1b.yaml (measured 2026-10-05)
+  index: 1                        # 1 = "DroidCam Video" on this PC (python scripts/check_camera.py --list)
+  backend: dshow
+  connect_on_start: true
+  requested_width: 1920           # requested, not assumed: DroidCam sends the resolution set in its client
+  requested_height: 1080          # (2560 x 1440 measured 2026-10-05); the delivered size is recorded per image
+  requested_fps: 30
+  resolution_choices: [[1920, 1080], [1280, 720], [640, 480]]
+  read_failures_before_disconnect: 15
+  frozen_after_s: 3.0             # PROVISIONAL: no pixel change for this long = frozen stream, no captures
+                                  # (also stops captures of the static "Start DroidCam" screen of a stopped client)
+  reconnect_every_s: 2.0
+  fresh_frame_timeout_s: 2.0
+
+image_format: png                 # lossless copy of the frame as delivered
+
+paths:                            # used only without a product profile; the product's storage.layout wins
+  acquisition: collection/originals
+  curated: collection
+  quarantine: collection/quarantine
+
+session:
+  default_image_count: 10
+  max_image_count: 500
+  default_interval_s: 3           # 3-second countdown before every capture
+  min_interval_s: 1
+  default_review_mode: after_each # review (KEEP / REJECT) every image before the next countdown
+  inspection_area_fraction: 0.9   # = pcb_check.roi_fraction (kept for the shared preview code)
+  require_board_id: true          # every image is grouped by its physical board (GOOD_001, FAULT_001, ...)
+  wait_for_pcb: true              # the 3 s countdown runs only while the live PCB check is not RECAPTURE: a misplaced
+                                  # PCB is never captured; the countdown starts (again) as soon as the PCB is OK
+  max_consecutive_retakes: 3      # automatic retakes in a row (review.auto_reject_recapture) before the session stops
+  board_sequence: true            # AUTO BOARD SEQUENCE: START once; board N is captured until it has "images per
+                                  # board" KEPT images, then REMOVE it; once no PCB is in view for removal_s the next
+                                  # board ID (N+1) is waited for and captured automatically when it is placed
+  default_boards: 0               # boards in one run; 0 = until STOP
+  removal_s: 1.0                  # no PCB in view this long = the board was taken away
+
+# Capture-time PCB check (src/pcb_inspection/acquisition/pcb_view.py). Runs on every SAVED original:
+# frame -> PCB region -> crop/warp ONLY the PCB (canonical PCB image) -> checks -> OK / REVIEW / RECAPTURE.
+# Also runs on the live preview every preview_every_s (same resolution, guidance for placing the board).
+pcb_check:
+  roi_fraction: 0.9               # inspection ROI = the dashed preview frame: board-shaped, centred, 90 % of the view height (was 0.8; 2026-10-07: lets the camera go closer, board up to ~15.6 px/mm instead of ~13.9)
+  min_board_area_fraction: 0.10   # PROVISIONAL: = experiment_002 pcb_presence (frames without a board <= 0.05)
+  edge_margin_fraction: 0.01      # PROVISIONAL: board >= 1 % of the short side away from the image edge
+  max_aspect_error: 0.08          # PROVISIONAL: board outline vs 116 x 83 mm (whole boards measured 0.003-0.03)
+  min_outline_fill: 0.93          # PROVISIONAL: convex hull of the board region / 4-corner outline. Measured 2026-10-06:
+  max_outline_fill: 1.10          #   whole boards 0.95-1.09 (the first real collection frames 0.973-0.984), a board
+                                  #   half out of the view 0.86, a second board merged into the outline 0.88.
+  min_pixel_fill: 0.75            # PROVISIONAL: raw board pixels / outline. Correct real frames 0.84-0.96 (parts on the
+                                  #   board edge notch it), so only a LARGE occlusion fails; smaller objects over the
+                                  #   board are for the operator, who sees every PCB image before KEEP.
+  watermark_clearance_mm: 2.0     # PROVISIONAL: the watermark must stay this far from the board edge (was 3.0; a board
+                                  # 2.97 mm from it was refused although the crop excludes it; crop accuracy ~1 mm)
+  canonical_px_per_mm: 20         # canonical PCB image: 116 x 83 mm -> 2320 x 1660 px (= Experiment 1 / 2)
+  pcb_border_mm: 1.0              # exposure / focus measured inside this rim
+  min_source_px_per_mm: 8.0       # PROVISIONAL: board scale in the frame; real collection frames 9.3-12.7 px/mm
+  sharpness_px_per_mm: 8.0        # focus is measured on the PCB image resized to this FIXED scale, so the camera
+                                  # distance does not change the score (at 20 px/mm a farther camera looked "blurry")
+  min_pcb_sharpness: 300          # PROVISIONAL: Laplacian variance at 8 px/mm. Measured 2026-10-06 on real frames:
+                                  # blurred 121-242 (motion / out of focus / half out of view), readable and in focus
+                                  # 355-1100 (incl. a farther camera at 9.3 px/mm: 390).
+                                  # Plus: < 50 % of the session median -> REVIEW (quality_check.relative_sharpness_min)
+  # Orientation: the PCB image is compared (4 px/mm, blurred) with the PCB image of the inspection reference, as is and
+  # turned 180 deg; better turned -> PCB_ROTATED (the board lies the other way round). Measured 2026-10-06 on all 66
+  # real PCB images: upright 0.16-1.00 vs < 0 turned; the 14 rotated ones scored higher turned (agrees with the
+  # registration angle). Set by scripts/setup_reference.py --apply. null = no orientation check.
+  orientation_reference: data/collection/originals/good/GOOD_001/S20261006-03/pcb/GOOD_001_TOP_S20261006-03_C007_pcb.png
+  min_orientation_margin: 0.02
+  near_black_level: 5
+  near_white_level: 250
+  max_near_white_fraction: 0.02   # PROVISIONAL: clipped (glare) pixels on the PCB -> OVEREXPOSED
+  max_near_black_fraction: 0.05   # PROVISIONAL: black pixels on the PCB -> UNDEREXPOSED
+  preview_every_s: 1.0            # live check of the preview (full resolution, ~0.2 s each, background thread)
+  segmentation:                   # = Experiment 1 / 2 board segmentation
+    saturation_min: 60
+    value_min: 40
+    hue_tolerance: 12
+  watermark:                      # DroidCam free-edition overlay "using droidcam.app"; position MOVES between
+    enabled: true                 # DroidCam sessions, so it is located in every frame (preprocessing/watermark.py)
+    template: experiments/experiment_002/droidcam_watermark_template.png   # glyph mask, measured on 436 live frames
+    template_frame_width: 2560
+    search_region: [0.0, 0.0, 1.0, 1.0]
+    min_score: 0.45               # matches found 2026-10-05: 0.53-0.80
+    min_margin: 0.10
+    dilate_px: 2
+
+review:
+  keep_requires_capture_check: true   # a capture whose check is RECAPTURE cannot be KEPT (REJECT -> quarantine)
+  auto_reject_recapture: true         # such a capture is put in quarantine automatically (reason from reason_for_check,
+                                      # review.decided_by: capture_check) and taken again; it does not count as one of
+                                      # the requested images
+  auto_keep_ok: true                  # a capture whose check is OK is KEPT automatically (decided_by: capture_check);
+                                      # the operator can still undo it with REJECT LAST. REVIEW captures always wait for
+                                      # the operator. Can be switched off in the window ("Keep OK images automatically").
+  copy_original_on_keep: false        # KEEP puts only the PCB image (no background, no watermark) into good/ and fault/;
+                                      # the full frame stays in originals/. REJECT copies both into quarantine/.
+  reject_reasons:
+    - blurry
+    - pcb_not_fully_visible
+    - pcb_outside_roi
+    - watermark_over_pcb
+    - bad_crop
+    - wrong_orientation
+    - exposure
+    - obstruction
+    - reflection
+    - wrong_board
+    - wrong_stage
+    - duplicate
+    - operator_mistake
+    - other
+  reason_for_check:                   # reject reason PRE-SELECTED for a RECAPTURE (the operator still decides)
+    NO_PCB: pcb_not_fully_visible
+    PCB_INCOMPLETE: pcb_not_fully_visible
+    PCB_OUTSIDE_ROI: pcb_outside_roi
+    WATERMARK_OVER_PCB: watermark_over_pcb
+    BAD_CROP: bad_crop
+    BLURRY: blurry
+    PCB_TOO_SMALL: pcb_not_fully_visible
+    PCB_ROTATED: wrong_orientation
+    OVEREXPOSED: exposure
+    UNDEREXPOSED: exposure
+
+# FAULT PCB sessions: optional fault information, only when KNOWN (UNKNOWN is the default; never guessed).
+# operator choice -> project taxonomy (configs/project.yaml defects.taxonomy); null = no single equivalent.
+defect_types:
+  missing_component: missing_component
+  damaged_component: damaged_component
+  wrong_component: wrong_component
+  broken_or_missing_trace: null     # one operator choice for "broken / missing trace"; the taxonomy has broken_trace
+                                    # and missing_trace separately: not mapped by guess (write which in the notes)
+  solder_defect: solder_defect
+  misalignment: misaligned_component
+  other: other_anomaly
+
+guidance:
+  good:
+    title: "GOOD PCB - AUTO CAPTURE"
+    steps:
+      - "1. Label the good boards GOOD_001, GOOD_002, ..."
+      - "2. START, place each board the same way round inside the frame, away from the red WATERMARK ZONE."
+      - "3. Captured automatically; when it says REMOVE, lift it out and place the next."
+  fault:
+    title: "FAULT PCB - AUTO CAPTURE"
+    steps:
+      - "1. Label the faulty boards FAULT_001, FAULT_002, ..."
+      - "2. Before placing a board: fault known? Enter it below, else UNKNOWN."
+      - "3. Captured automatically; REMOVE, then the next board. Never into the GOOD bank."
+
+# Image-quality measurements of the full frame (pcb_inspection.image_quality, as Experiment 0 / 1B).
+# Recorded for every capture; the PCB check above decides OK / REVIEW / RECAPTURE.
+quality_check:
+  min_megapixels: null
+  min_sharpness: null
+  relative_sharpness_min: 0.5    # PROVISIONAL: < 50 % of the session median -> flag / PCB check REVIEW
+  near_black_level: 5
+  near_white_level: 250
+  max_near_white_fraction: 0.02  # PROVISIONAL
+  max_near_black_fraction: 0.05  # PROVISIONAL
+  board_detection:
+    saturation_min: 60
+    value_min: 40
+    hue_tolerance: 12
+    line_fraction_min: 0.10
+    min_margin_fraction: 0.01
+    max_aspect_error: 0.10

@@ -1,0 +1,25 @@
+# Pump Controller / variant_1: PLACEHOLDER. Whether the product has variants is UNKNOWN; this file exists so the
+# profile has the standard structure. Every value is null (UNKNOWN).
+
+variant_id: variant_1
+variant_label: null
+revision: null
+
+engine:
+  type: REFERENCE_BASELINE          # the same experimental engine as other products; it needs this product's own golden bank
+  status: EXPERIMENTAL
+  config: experiments/experiment_002/config.yaml   # algorithm parameters only; no LG data is used (golden bank / regions below)
+
+golden: golden/golden_bank.yaml
+regions: regions/regions.yaml
+rules: inspection_rules.yaml
+
+alignment:
+  min_inlier_ratio: null
+  max_fit_error_mm: null
+  frame_margin_fraction: null
+  max_corner_angle_deviation_deg: null
+  min_board_width_fraction: null
+
+quality:
+  capture_config: null

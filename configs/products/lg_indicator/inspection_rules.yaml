@@ -1,0 +1,35 @@
+# Inspection rules of LG Indicator / variant_1.
+#
+# Defect types come from the project taxonomy (configs/project.yaml defects.taxonomy). A type is reported only if it
+# is enabled here AND the inspection engine can detect it. The REFERENCE_BASELINE detects only missing_component
+# (a region that looks like none of the GOOD boards); everything else is not inspected yet.
+
+defect_types:
+  missing_component: {enabled: true, severity: null}    # severity scale not defined by production (UNKNOWN)
+  damaged_component: {enabled: false, severity: null}
+  misaligned_component: {enabled: false, severity: null}
+  wrong_component: {enabled: false, severity: null}
+  wrong_polarity: {enabled: false, severity: null}
+  missing_or_damaged_lead: {enabled: false, severity: null}
+  broken_trace: {enabled: false, severity: null}
+  missing_trace: {enabled: false, severity: null}
+  damaged_pcb: {enabled: false, severity: null}
+  solder_defect: {enabled: false, severity: null}
+  foreign_object: {enabled: false, severity: null}
+  other_anomaly: {enabled: false, severity: null}
+
+decision:
+  # Per region the engine measures the best similarity to ANY GOOD board of the bank and compares it with the
+  # limit (global or calibrated). Measured GOOD-vs-missing margin is only ~0.03 (experiments/experiment_002/README.md),
+  # so results inside this band around the limit are UNCERTAIN -> REVIEW, in both directions:
+  #   DEFECT only if similarity <= limit - uncertainty_band; GOOD only if every region >= limit + uncertainty_band.
+  uncertainty_band: 0.03                 # PROVISIONAL (= the measured margin)
+  # A region must be (almost) fully visible to count as evidence. Partly hidden regions (camera watermark, ignored
+  # pixels, outside the aligned view) -> REVIEW, never GOOD or DEFECT. Found 2026-10-05: LED4 is only 69-85 % visible
+  # in every image, because the DroidCam watermark burned into the geometric reference image lies over it; the
+  # LED4-missing DEFECT board (session S20261005-03) then scored "present" (similarity 0.78-0.80 > 0.735) in 10/10 images.
+  min_region_visible_fraction: 0.95      # PROVISIONAL
+  max_plausible_defects: 5               # more differing regions at once: not a credible defect -> REVIEW (engine config)
+  allow_good_with_unverified_regions: true   # GOOD = "every region in the DRAFT map matched a GOOD board"; parts outside
+                                             # the map are not inspected. Each result lists this limitation.
+  confidence: null                       # no calibrated confidence exists; results report measured scores, never invented confidence

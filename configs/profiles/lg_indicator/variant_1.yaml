@@ -1,0 +1,231 @@
+# Inspection profile: LG Indicator / variant 1
+#
+# One profile = one PCB model + variant (+ revision). It holds everything the
+# inspection needs that is specific to this board: verified PCB facts, imaging
+# settings, reference data, component map, defect rules and model version.
+# See docs/pcb_inspection_spec.md (scope) and docs/production_profile.md
+# (KNOWN / UNKNOWN / NEEDS CLARIFICATION).
+#
+# Same conventions as configs/project.yaml: null = UNKNOWN; ambiguous answers
+# stay null and are recorded verbatim under `needs_clarification`.
+# Source of all verified values: Production/PCB mentor, 2026-10-02.
+
+profile_id: lg_indicator/variant_1
+profile_version: 2
+answers_source: "Production/PCB mentor, 2026-10-02 (two rounds)"
+
+# --- Verified PCB facts (Phase 1) --------------------------------------------
+pcb:
+  model: "LG Indicator"          # PCB-01
+  variant_count: 1               # PCB-02
+  variant_label: "1"             # value written in metadata ("VARIANT: 1"); no official identifier given
+  revision_count: 1              # PCB-03 "single"
+  revision_id: null              # PCB-03: identifier of the single revision not given
+  dimensions_mm:                 # PCB-04 "83 × 116 mm"
+    short_side: 83
+    long_side: 116
+  panelized_at_inspection: false # PCB-05 "Individually"
+  thickness_mm: 1.6              # PCB-06
+  max_component_height_mm_approx: 12   # PCB-06 "approximately 12 mm"; side not stated
+  component_sides: null          # PCB-07: sides carrying components not stated
+  inspection_sides: [top]        # PCB-07 "Top side"
+  assembly_technology: mixed     # PCB-08 "Mixed assembly" (see needs_clarification)
+  soldering_processes: null      # PCB-08
+  parts_added_after_inspection: null   # PCB-08
+  component_count: null          # PCB-09
+  smallest_package_reported: "1206"    # PCB-10; NOT treated as the confirmed smallest physical feature
+  smallest_package_size_mm: null       # PCB-10: not confirmed (see needs_clarification)
+  smallest_feature_reported: "resistors like too small"   # PCB-29 verbatim: small resistors are among the smallest objects
+  smallest_feature_to_detect_mm: null  # PCB-29: exact package / dimensions UNKNOWN (confirm from BOM or PCB documentation)
+  other_packages: null           # PCB-10
+  hidden_joint_packages: null    # PCB-10
+  polarized_components: null     # PCB-13
+  critical_components: null      # PCB-14
+  look_alike_parts: null         # PCB-15
+  approved_alternate_parts: null # PCB-16
+  holes:                         # PCB-17: "There are no holes in the lower-left side. The remaining 3 positions have holes."
+    lower_left_position_has_hole: false
+    other_positions_with_holes: 3
+    feature_type: null           # fiducial / tooling / mounting / other: NEEDS CLARIFICATION (not assumed)
+    positions_definition: null   # what the 4 "positions" are, and the viewing orientation of "lower-left"
+    coordinates_mm: null         # NEEDS CLARIFICATION
+    geometry: null               # diameter / shape: NEEDS CLARIFICATION
+  fiducials: null                # PCB-17: not known whether the holes are fiducials
+  tooling_holes: null            # PCB-17: not known whether the holes are tooling holes
+  surface_finish: null           # PCB-18
+  silkscreen_colour: null        # PCB-18
+  conformal_coating: false       # PCB-19 "No"
+  outer_layer_traces_to_inspect: null  # PCB-20
+  min_trace_width_mm: null       # PCB-20
+  min_trace_spacing_mm: null     # PCB-20
+  identification_marking: none_in_current_scope  # PCB-21; may be considered in future
+  acceptance_standard: null      # PCB-23
+  placement_tolerance:
+    offset_mm: null              # PCB-23
+    rotation_deg: null           # PCB-23
+  warpage: null                  # PCB-27
+  known_acceptable_variation: null     # PCB-28
+
+# --- Visual variations of this same PCB (not separate variants or models) ---
+# PCB-18 clarification: "It is the same PCB. Depending on availability, the
+# colour may change, but the working/function of the PCB remains the same."
+# Colour is a visual/environmental variation recorded per board. Whether one
+# inspection model handles all colours, or colour-specific references /
+# settings are needed, is decided by experiments (docs/model_strategy.md).
+appearance_variations:
+  board_colour:
+    varies: true                 # PCB-18 clarification
+    reported_values: [blue, red, green]   # from the first answer; "may include"
+    list_complete: null          # UNKNOWN whether other colours occur
+    proportions: null            # UNKNOWN share of each colour among available boards
+
+# --- Inspection stages (PRD-06, partially clarified) -------------------------
+# First answer "all 3"; clarification named two stages. A third stage is not invented.
+inspection_stages:
+  confirmed: [after_smt_reflow, after_tht]
+  third_stage: null              # UNKNOWN whether a third stage exists, and what it is
+
+defect_scope:
+  relevant_categories: all       # PCB-24 "all": all listed target categories are considered relevant at this stage
+  frequency: null                # PCB-24: actual defect Pareto UNKNOWN
+  defect_rate: null              # PCB-25
+  escapes_past_electrical_test: null   # PCB-26
+
+cad_data:
+  bom: null                      # PCB-11 (do not assume available)
+  centroid_file: null            # PCB-12 (do not assume available)
+  gerber_or_odb: null            # PCB-22
+  assembly_drawing: null         # PCB-22
+
+# --- Data availability (Phases 4-5) ------------------------------------------
+data_availability:
+  known_good_boards_approx: 500  # DATA-01 "Approximately 500 known-good boards available"
+  good_boards_photographable: null     # DATA-01: not confirmed that all can be photographed
+  good_board_lots: null          # DATA-01: not confirmed whether one or several lots
+  good_status_basis: null        # DATA-01: how "known-good" was established
+  rejected_boards_available: true      # DATA-02
+  rejected_boards_count: null    # DATA-02
+  rejected_boards_defect_records: null # DATA-02, DATA-04
+  electrical_test_results_per_board: null  # DATA-03
+  controlled_defects_permitted: null   # DATA-05: not permitted unless approved in writing
+  ground_truth_verifier: operator      # DATA-06 "Operator will provide/verify ground truth"
+  ground_truth_verifier_identity: null # DATA-06
+  experiment_0_good_board_available: true       # round 2: "A real good board is available for the first capture experiment."
+  experiment_0_defective_board_available: true  # round 2: "A defective board is also available."
+  pilot_station_near_line: true  # DATA-07
+  confidentiality_restrictions_reported: false   # DATA-08; images can be stored locally
+  handling_restrictions_reported: false          # DATA-09; does not override company procedures (PRD-27)
+
+# --- Imaging settings for this board (production-representative) -----------
+# Still UNKNOWN: production camera, lens and lighting are not decided. The
+# Experiment 0 phone capture uses configs/capture/mobile_phone_e0.yaml; its
+# results inform these values but do not fill them.
+imaging:
+  field_of_view_mm: null         # >= 83 x 116 mm plus margin
+  fov_margin_mm: null
+  target_mm_per_px: null         # needs PCB-29
+  measured_mm_per_px: null       # from the geometric calibration target
+  working_distance_mm: null
+  aperture_f: null
+  focus_plane: null              # board surface / component tops (12 mm range)
+  exposure_us: null
+  gain_db: null
+  white_balance: null
+  lighting_setup: null
+  tiling: null
+  camera_angle_deg: null         # planned 0 (perpendicular); confirm when built
+  canonical_orientation: null    # reference photo + description, top side
+
+# --- Inspection artifacts (none exist yet) -----------------------------------
+reference:
+  golden_boards: null            # board IDs from the train split only
+  reference_set_version: null
+component_map: null              # requires BOM + centroid file (PCB-11, PCB-12)
+model:
+  inspection_method: null        # not selected (docs/model_strategy.md)
+  version: null
+
+image_quality:                   # production thresholds; the phone re-take prompts are in configs/capture/
+  min_sharpness: null            # derived from production-setup good-board captures
+  max_clipped_fraction: null
+  brightness_range: null
+  board_fully_in_view: true      # protocol
+
+alignment:
+  method: null                   # depends on PCB-17; decided in E2
+  max_residual_error_mm: null
+
+# --- Decision engine (Phase 8) -----------------------------------------------
+# First matching rule applies (list critical rules before "any" rules).
+# applies_to: critical / non_critical / any. While thresholds are null every
+# matching finding gives REVIEW, and with no required_stages no board can PASS.
+decision_engine:
+  required_stages: null
+  rules:
+    - {defect_type: missing_component,       applies_to: critical, fail_threshold: null, review_threshold: null}
+    - {defect_type: missing_component,       applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: damaged_component,       applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: misaligned_component,    applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: wrong_component,         applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: wrong_polarity,          applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: missing_or_damaged_lead, applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: broken_trace,            applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: missing_trace,           applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: damaged_pcb,             applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: solder_defect,           applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: foreign_object,          applies_to: any,      fail_threshold: null, review_threshold: null}
+    - {defect_type: other_anomaly,           applies_to: any,      fail_threshold: null, review_threshold: null}
+
+# --- Ambiguous answers (verbatim) ---------------------------------------------
+# `blocks` lists what each open item holds up. None of them blocks the
+# Experiment 0 phone capture.
+needs_clarification:
+  - id: PCB-17
+    status: needs_clarification
+    reported:
+      - "round 1: yes and expect down left every position has the holes"
+      - "round 2: There are no holes in the lower-left side. The remaining 3 positions have holes."
+    source: "Production/PCB mentor, 2026-10-02"
+    clarify:
+      - "whether the holes are fiducials, tooling holes, mounting holes, or another feature"
+      - "exact coordinates and geometry (diameter, shape) of each hole"
+      - "what the four 'positions' are, and from which viewing orientation 'lower-left' is defined"
+    affects: [pcb.holes.feature_type, pcb.holes.positions_definition, pcb.holes.coordinates_mm,
+              pcb.holes.geometry, pcb.fiducials, pcb.tooling_holes]
+    blocks: [fixture_design, alignment_method]
+  - id: PRD-06
+    status: partially_clarified
+    reported:
+      - "round 1: all 3"
+      - "round 2: After SMT/reflow; After THT"
+    source: "Production/PCB mentor, 2026-10-02"
+    clarify:
+      - "whether a third inspection stage exists, and if so which"
+    affects: [inspection_stages.third_stage]
+    blocks: []
+  - id: PCB-29
+    status: needs_clarification
+    reported: "resistors like too small"
+    source: "Production/PCB mentor, 2026-10-02"
+    clarify:
+      - "which resistors are meant, and their package / physical dimensions (confirm from BOM or PCB documentation)"
+    affects: [pcb.smallest_feature_to_detect_mm]
+    blocks: [production_camera_resolution]
+  - id: PCB-10
+    status: needs_clarification
+    reported: "1206"
+    source: "Production/PCB mentor, 2026-10-02"
+    clarify:
+      - "whether 1206 is really the smallest package (PCB-29 names small resistors as the smallest objects; their package is unknown)"
+      - "size-code system: imperial 1206 is 3.2 x 1.6 mm nominal; metric codes differ"
+    affects: [pcb.smallest_package_size_mm]
+    blocks: []
+  - id: PCB-08
+    status: needs_clarification
+    reported: "Mixed assembly"
+    source: "Production/PCB mentor, 2026-10-02"
+    clarify:
+      - "which technologies are mixed (e.g. SMT + THT) and which soldering processes are used"
+      - "where THT solder joints are, if any (a top-side camera cannot see bottom-side joints)"
+    affects: [pcb.soldering_processes]
+    blocks: []

@@ -1,0 +1,2289 @@
+{
+ "canonical_px": [
+  830,
+  1160
+ ],
+ "px_per_mm": 10.0,
+ "board_mm": [
+  83.0,
+  116.0
+ ],
+ "regions": [
+  {
+   "id": "C001",
+   "name": "HOLE1",
+   "kind": "empty",
+   "bbox_mm": [
+    11.0,
+    1.1,
+    4.0,
+    4.1
+   ],
+   "part_fraction": 0.4463,
+   "texture_std": 48.82,
+   "metal_share": 0.055
+  },
+  {
+   "id": "C002",
+   "name": "HOLE2",
+   "kind": "empty",
+   "bbox_mm": [
+    78.3,
+    1.0,
+    3.7,
+    3.6
+   ],
+   "part_fraction": 0.4189,
+   "texture_std": 40.45,
+   "metal_share": 0.461
+  },
+  {
+   "id": "C003",
+   "name": "LED1",
+   "kind": "empty",
+   "bbox_mm": [
+    2.5,
+    3.6,
+    3.9,
+    6.0
+   ],
+   "part_fraction": 0.4244,
+   "texture_std": 47.27,
+   "metal_share": 0.238
+  },
+  {
+   "id": "C004",
+   "name": "R13",
+   "kind": "part",
+   "bbox_mm": [
+    7.4,
+    3.7,
+    3.1,
+    5.4
+   ],
+   "part_fraction": 0.4665,
+   "texture_std": 54.87,
+   "metal_share": 0.342
+  },
+  {
+   "id": "C005",
+   "name": "LED12",
+   "kind": "empty",
+   "bbox_mm": [
+    19.6,
+    4.0,
+    6.2,
+    3.9
+   ],
+   "part_fraction": 0.555,
+   "texture_std": 50.41,
+   "metal_share": 0.199
+  },
+  {
+   "id": "C006",
+   "name": "MH1",
+   "kind": "empty",
+   "bbox_mm": [
+    33.0,
+    3.5,
+    4.9,
+    4.9
+   ],
+   "part_fraction": 0.4519,
+   "texture_std": 60.46,
+   "metal_share": 0.0
+  },
+  {
+   "id": "C007",
+   "name": "LED13",
+   "kind": "empty",
+   "bbox_mm": [
+    39.7,
+    4.0,
+    6.2,
+    3.8
+   ],
+   "part_fraction": 0.4958,
+   "texture_std": 44.59,
+   "metal_share": 0.217
+  },
+  {
+   "id": "C008",
+   "name": "R37",
+   "kind": "part",
+   "bbox_mm": [
+    46.3,
+    4.4,
+    5.6,
+    3.1
+   ],
+   "part_fraction": 0.4487,
+   "texture_std": 53.8,
+   "metal_share": 0.347
+  },
+  {
+   "id": "C009",
+   "name": "MH2",
+   "kind": "empty",
+   "bbox_mm": [
+    73.8,
+    3.8,
+    4.7,
+    4.9
+   ],
+   "part_fraction": 0.4255,
+   "texture_std": 59.9,
+   "metal_share": 0.006
+  },
+  {
+   "id": "C010",
+   "name": "C16",
+   "kind": "part",
+   "bbox_mm": [
+    55.2,
+    6.7,
+    5.7,
+    3.3
+   ],
+   "part_fraction": 0.4189,
+   "texture_std": 47.96,
+   "metal_share": 0.263
+  },
+  {
+   "id": "C011",
+   "name": "R21",
+   "kind": "part",
+   "bbox_mm": [
+    13.3,
+    11.2,
+    5.3,
+    3.2
+   ],
+   "part_fraction": 0.4699,
+   "texture_std": 58.12,
+   "metal_share": 0.376
+  },
+  {
+   "id": "C012",
+   "name": "J_A",
+   "kind": "empty",
+   "bbox_mm": [
+    19.0,
+    9.1,
+    3.5,
+    5.7
+   ],
+   "part_fraction": 0.4847,
+   "texture_std": 38.89,
+   "metal_share": 0.122
+  },
+  {
+   "id": "C013",
+   "name": "R36",
+   "kind": "part",
+   "bbox_mm": [
+    34.2,
+    10.0,
+    3.0,
+    5.5
+   ],
+   "part_fraction": 0.4861,
+   "texture_std": 58.08,
+   "metal_share": 0.357
+  },
+  {
+   "id": "C014",
+   "name": "R54",
+   "kind": "part",
+   "bbox_mm": [
+    40.9,
+    9.9,
+    3.1,
+    5.7
+   ],
+   "part_fraction": 0.4714,
+   "texture_std": 54.17,
+   "metal_share": 0.324
+  },
+  {
+   "id": "C015",
+   "name": "R42",
+   "kind": "part",
+   "bbox_mm": [
+    55.3,
+    9.4,
+    5.7,
+    3.3
+   ],
+   "part_fraction": 0.4471,
+   "texture_std": 51.34,
+   "metal_share": 0.314
+  },
+  {
+   "id": "C016",
+   "name": "J_B1",
+   "kind": "empty",
+   "bbox_mm": [
+    24.0,
+    13.0,
+    4.2,
+    3.2
+   ],
+   "part_fraction": 0.5372,
+   "texture_std": 30.9,
+   "metal_share": 0.118
+  },
+  {
+   "id": "C017",
+   "name": "LED11",
+   "kind": "empty",
+   "bbox_mm": [
+    5.3,
+    14.9,
+    6.3,
+    3.9
+   ],
+   "part_fraction": 0.4615,
+   "texture_std": 48.25,
+   "metal_share": 0.215
+  },
+  {
+   "id": "C018",
+   "name": "R35",
+   "kind": "part",
+   "bbox_mm": [
+    13.0,
+    16.1,
+    5.5,
+    3.0
+   ],
+   "part_fraction": 0.4873,
+   "texture_std": 54.94,
+   "metal_share": 0.332
+  },
+  {
+   "id": "C019",
+   "name": "J_B2",
+   "kind": "empty",
+   "bbox_mm": [
+    24.0,
+    15.5,
+    4.2,
+    3.1
+   ],
+   "part_fraction": 0.4923,
+   "texture_std": 38.1,
+   "metal_share": 0.119
+  },
+  {
+   "id": "C020",
+   "name": "LED14_2",
+   "kind": "empty",
+   "bbox_mm": [
+    42.9,
+    17.6,
+    3.2,
+    3.8
+   ],
+   "part_fraction": 0.4794,
+   "texture_std": 50.63,
+   "metal_share": 0.266
+  },
+  {
+   "id": "C021",
+   "name": "SW_1",
+   "kind": "empty",
+   "bbox_mm": [
+    59.8,
+    14.2,
+    4.6,
+    7.1
+   ],
+   "part_fraction": 0.4764,
+   "texture_std": 52.54,
+   "metal_share": 0.35
+  },
+  {
+   "id": "C022",
+   "name": "SW_2",
+   "kind": "empty",
+   "bbox_mm": [
+    64.9,
+    14.1,
+    4.2,
+    7.1
+   ],
+   "part_fraction": 0.508,
+   "texture_std": 58.78,
+   "metal_share": 0.519
+  },
+  {
+   "id": "C023",
+   "name": "LED9_1",
+   "kind": "empty",
+   "bbox_mm": [
+    2.2,
+    19.4,
+    3.9,
+    3.1
+   ],
+   "part_fraction": 0.4574,
+   "texture_std": 49.01,
+   "metal_share": 0.179
+  },
+  {
+   "id": "C024",
+   "name": "R27",
+   "kind": "part",
+   "bbox_mm": [
+    13.0,
+    20.1,
+    5.5,
+    2.9
+   ],
+   "part_fraction": 0.4803,
+   "texture_std": 60.79,
+   "metal_share": 0.36
+  },
+  {
+   "id": "C025",
+   "name": "J_B3",
+   "kind": "empty",
+   "bbox_mm": [
+    23.9,
+    18.0,
+    4.3,
+    5.7
+   ],
+   "part_fraction": 0.5218,
+   "texture_std": 44.27,
+   "metal_share": 0.114
+  },
+  {
+   "id": "C026",
+   "name": "R31",
+   "kind": "part",
+   "bbox_mm": [
+    29.0,
+    18.0,
+    5.5,
+    3.1
+   ],
+   "part_fraction": 0.4938,
+   "texture_std": 56.25,
+   "metal_share": 0.355
+  },
+  {
+   "id": "C027",
+   "name": "LED14_1",
+   "kind": "empty",
+   "bbox_mm": [
+    39.8,
+    17.7,
+    3.9,
+    3.7
+   ],
+   "part_fraction": 0.5419,
+   "texture_std": 43.48,
+   "metal_share": 0.18
+  },
+  {
+   "id": "C028",
+   "name": "LED9_2",
+   "kind": "empty",
+   "bbox_mm": [
+    2.8,
+    22.6,
+    2.4,
+    2.4
+   ],
+   "part_fraction": 0.3472,
+   "texture_std": 38.09,
+   "metal_share": 0.245
+  },
+  {
+   "id": "C029",
+   "name": "LED9_3",
+   "kind": "empty",
+   "bbox_mm": [
+    4.5,
+    21.8,
+    1.6,
+    3.9
+   ],
+   "part_fraction": 0.3077,
+   "texture_std": 45.99,
+   "metal_share": 0.615
+  },
+  {
+   "id": "C030",
+   "name": "J_B5",
+   "kind": "empty",
+   "bbox_mm": [
+    24.0,
+    23.1,
+    4.2,
+    3.3
+   ],
+   "part_fraction": 0.4574,
+   "texture_std": 43.34,
+   "metal_share": 0.09
+  },
+  {
+   "id": "C031",
+   "name": "R51",
+   "kind": "part",
+   "bbox_mm": [
+    39.2,
+    23.5,
+    3.1,
+    5.8
+   ],
+   "part_fraction": 0.4811,
+   "texture_std": 55.25,
+   "metal_share": 0.314
+  },
+  {
+   "id": "C032",
+   "name": "R34",
+   "kind": "part",
+   "bbox_mm": [
+    42.5,
+    23.5,
+    2.9,
+    5.6
+   ],
+   "part_fraction": 0.4637,
+   "texture_std": 56.55,
+   "metal_share": 0.325
+  },
+  {
+   "id": "C033",
+   "name": "SW_3",
+   "kind": "empty",
+   "bbox_mm": [
+    60.1,
+    23.7,
+    4.4,
+    7.4
+   ],
+   "part_fraction": 0.5114,
+   "texture_std": 52.2,
+   "metal_share": 0.277
+  },
+  {
+   "id": "C034",
+   "name": "SW_4",
+   "kind": "empty",
+   "bbox_mm": [
+    65.0,
+    23.7,
+    4.3,
+    7.0
+   ],
+   "part_fraction": 0.5,
+   "texture_std": 59.46,
+   "metal_share": 0.496
+  },
+  {
+   "id": "C035",
+   "name": "R57",
+   "kind": "part",
+   "bbox_mm": [
+    27.3,
+    27.0,
+    5.5,
+    3.2
+   ],
+   "part_fraction": 0.4256,
+   "texture_std": 57.91,
+   "metal_share": 0.334
+  },
+  {
+   "id": "C036",
+   "name": "R56",
+   "kind": "part",
+   "bbox_mm": [
+    27.3,
+    29.9,
+    5.5,
+    3.0
+   ],
+   "part_fraction": 0.4545,
+   "texture_std": 59.39,
+   "metal_share": 0.344
+  },
+  {
+   "id": "C037",
+   "name": "R60",
+   "kind": "part",
+   "bbox_mm": [
+    13.0,
+    30.5,
+    5.6,
+    3.1
+   ],
+   "part_fraction": 0.4983,
+   "texture_std": 61.61,
+   "metal_share": 0.386
+  },
+  {
+   "id": "C038",
+   "name": "R59",
+   "kind": "part",
+   "bbox_mm": [
+    27.3,
+    32.8,
+    5.6,
+    3.2
+   ],
+   "part_fraction": 0.4844,
+   "texture_std": 58.36,
+   "metal_share": 0.374
+  },
+  {
+   "id": "C039",
+   "name": "LED17",
+   "kind": "empty",
+   "bbox_mm": [
+    2.3,
+    32.8,
+    3.8,
+    6.3
+   ],
+   "part_fraction": 0.3613,
+   "texture_std": 49.17,
+   "metal_share": 0.291
+  },
+  {
+   "id": "C040",
+   "name": "LED15",
+   "kind": "empty",
+   "bbox_mm": [
+    39.9,
+    33.6,
+    6.3,
+    3.8
+   ],
+   "part_fraction": 0.4027,
+   "texture_std": 46.52,
+   "metal_share": 0.297
+  },
+  {
+   "id": "C041",
+   "name": "R39",
+   "kind": "part",
+   "bbox_mm": [
+    46.3,
+    33.9,
+    5.4,
+    2.8
+   ],
+   "part_fraction": 0.4676,
+   "texture_std": 56.3,
+   "metal_share": 0.321
+  },
+  {
+   "id": "C042",
+   "name": "LED10",
+   "kind": "empty",
+   "bbox_mm": [
+    5.4,
+    36.9,
+    6.3,
+    4.2
+   ],
+   "part_fraction": 0.446,
+   "texture_std": 42.41,
+   "metal_share": 0.22
+  },
+  {
+   "id": "C043",
+   "name": "R38",
+   "kind": "part",
+   "bbox_mm": [
+    11.7,
+    37.2,
+    5.5,
+    3.0
+   ],
+   "part_fraction": 0.4461,
+   "texture_std": 54.65,
+   "metal_share": 0.353
+  },
+  {
+   "id": "C044",
+   "name": "R48",
+   "kind": "part",
+   "bbox_mm": [
+    25.0,
+    36.1,
+    3.0,
+    5.7
+   ],
+   "part_fraction": 0.5018,
+   "texture_std": 63.08,
+   "metal_share": 0.352
+  },
+  {
+   "id": "C045",
+   "name": "R30",
+   "kind": "part",
+   "bbox_mm": [
+    28.5,
+    35.9,
+    3.2,
+    5.9
+   ],
+   "part_fraction": 0.473,
+   "texture_std": 56.93,
+   "metal_share": 0.339
+  },
+  {
+   "id": "C046",
+   "name": "R50_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    60.2,
+    38.0,
+    2.6,
+    3.3
+   ],
+   "part_fraction": 0.3473,
+   "texture_std": 63.39,
+   "metal_share": 0.634
+  },
+  {
+   "id": "C047",
+   "name": "R50_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    63.3,
+    38.1,
+    2.6,
+    3.1
+   ],
+   "part_fraction": 0.3871,
+   "texture_std": 60.72,
+   "metal_share": 0.596
+  },
+  {
+   "id": "C048",
+   "name": "R32_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    63.5,
+    40.9,
+    2.9,
+    3.2
+   ],
+   "part_fraction": 0.3847,
+   "texture_std": 55.13,
+   "metal_share": 0.406
+  },
+  {
+   "id": "C049",
+   "name": "R32_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    66.5,
+    40.9,
+    3.0,
+    3.1
+   ],
+   "part_fraction": 0.3581,
+   "texture_std": 53.89,
+   "metal_share": 0.414
+  },
+  {
+   "id": "C050",
+   "name": "D11",
+   "kind": "part",
+   "bbox_mm": [
+    2.2,
+    42.4,
+    10.2,
+    3.8
+   ],
+   "part_fraction": 0.621,
+   "texture_std": 72.44,
+   "metal_share": 0.224
+  },
+  {
+   "id": "C051",
+   "name": "C14",
+   "kind": "part",
+   "bbox_mm": [
+    19.2,
+    42.6,
+    3.4,
+    6.3
+   ],
+   "part_fraction": 0.4416,
+   "texture_std": 46.92,
+   "metal_share": 0.273
+  },
+  {
+   "id": "C052",
+   "name": "LED16",
+   "kind": "empty",
+   "bbox_mm": [
+    40.0,
+    42.0,
+    6.2,
+    3.9
+   ],
+   "part_fraction": 0.3383,
+   "texture_std": 45.18,
+   "metal_share": 0.298
+  },
+  {
+   "id": "C053",
+   "name": "R40",
+   "kind": "part",
+   "bbox_mm": [
+    46.3,
+    42.4,
+    5.6,
+    3.2
+   ],
+   "part_fraction": 0.4526,
+   "texture_std": 58.49,
+   "metal_share": 0.382
+  },
+  {
+   "id": "C054",
+   "name": "Q11_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    75.5,
+    44.1,
+    4.6,
+    3.2
+   ],
+   "part_fraction": 0.4586,
+   "texture_std": 54.91,
+   "metal_share": 0.496
+  },
+  {
+   "id": "C055",
+   "name": "Q9",
+   "kind": "part",
+   "bbox_mm": [
+    12.4,
+    46.1,
+    5.3,
+    4.3
+   ],
+   "part_fraction": 0.4322,
+   "texture_std": 60.46,
+   "metal_share": 0.261
+  },
+  {
+   "id": "C056",
+   "name": "Q11_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    76.8,
+    46.6,
+    2.6,
+    3.2
+   ],
+   "part_fraction": 0.3666,
+   "texture_std": 59.94,
+   "metal_share": 0.561
+  },
+  {
+   "id": "C057",
+   "name": "J_C",
+   "kind": "empty",
+   "bbox_mm": [
+    3.0,
+    47.8,
+    5.8,
+    4.3
+   ],
+   "part_fraction": 0.4226,
+   "texture_std": 45.73,
+   "metal_share": 0.144
+  },
+  {
+   "id": "C058",
+   "name": "R45",
+   "kind": "part",
+   "bbox_mm": [
+    23.3,
+    50.4,
+    5.6,
+    3.0
+   ],
+   "part_fraction": 0.4804,
+   "texture_std": 57.65,
+   "metal_share": 0.371
+  },
+  {
+   "id": "C059",
+   "name": "D14_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    70.0,
+    50.0,
+    4.2,
+    3.9
+   ],
+   "part_fraction": 0.4792,
+   "texture_std": 64.62,
+   "metal_share": 0.521
+  },
+  {
+   "id": "C060",
+   "name": "D14_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    75.6,
+    50.0,
+    4.7,
+    4.0
+   ],
+   "part_fraction": 0.4787,
+   "texture_std": 58.8,
+   "metal_share": 0.517
+  },
+  {
+   "id": "C061",
+   "name": "R58",
+   "kind": "part",
+   "bbox_mm": [
+    1.8,
+    51.9,
+    5.8,
+    3.1
+   ],
+   "part_fraction": 0.5067,
+   "texture_std": 60.06,
+   "metal_share": 0.373
+  },
+  {
+   "id": "C062",
+   "name": "Q10",
+   "kind": "part",
+   "bbox_mm": [
+    12.3,
+    51.0,
+    5.4,
+    4.7
+   ],
+   "part_fraction": 0.3885,
+   "texture_std": 59.37,
+   "metal_share": 0.257
+  },
+  {
+   "id": "C063",
+   "name": "R18",
+   "kind": "part",
+   "bbox_mm": [
+    23.1,
+    53.9,
+    5.8,
+    3.0
+   ],
+   "part_fraction": 0.4724,
+   "texture_std": 59.64,
+   "metal_share": 0.426
+  },
+  {
+   "id": "C064",
+   "name": "TP1_1",
+   "kind": "empty",
+   "bbox_mm": [
+    58.2,
+    53.8,
+    2.3,
+    2.5
+   ],
+   "part_fraction": 0.3357,
+   "texture_std": 50.59,
+   "metal_share": 0.389
+  },
+  {
+   "id": "C065",
+   "name": "D12",
+   "kind": "part",
+   "bbox_mm": [
+    2.3,
+    54.7,
+    10.1,
+    3.9
+   ],
+   "part_fraction": 0.5804,
+   "texture_std": 70.1,
+   "metal_share": 0.19
+  },
+  {
+   "id": "C066",
+   "name": "TP1_2",
+   "kind": "empty",
+   "bbox_mm": [
+    59.1,
+    55.2,
+    2.1,
+    1.9
+   ],
+   "part_fraction": 0.2456,
+   "texture_std": 57.81,
+   "metal_share": 0.52
+  },
+  {
+   "id": "C067",
+   "name": "J_D",
+   "kind": "empty",
+   "bbox_mm": [
+    72.3,
+    56.0,
+    6.6,
+    4.6
+   ],
+   "part_fraction": 0.5504,
+   "texture_std": 63.24,
+   "metal_share": 0.527
+  },
+  {
+   "id": "C068",
+   "name": "R22",
+   "kind": "part",
+   "bbox_mm": [
+    23.3,
+    57.3,
+    5.6,
+    3.0
+   ],
+   "part_fraction": 0.4589,
+   "texture_std": 58.84,
+   "metal_share": 0.406
+  },
+  {
+   "id": "C069",
+   "name": "HOLE3",
+   "kind": "empty",
+   "bbox_mm": [
+    67.0,
+    59.0,
+    3.3,
+    3.4
+   ],
+   "part_fraction": 0.3966,
+   "texture_std": 58.58,
+   "metal_share": 0.476
+  },
+  {
+   "id": "C070",
+   "name": "R19",
+   "kind": "part",
+   "bbox_mm": [
+    4.8,
+    58.9,
+    3.1,
+    5.5
+   ],
+   "part_fraction": 0.4475,
+   "texture_std": 55.42,
+   "metal_share": 0.339
+  },
+  {
+   "id": "C071",
+   "name": "LED2",
+   "kind": "empty",
+   "bbox_mm": [
+    8.0,
+    60.5,
+    6.3,
+    4.6
+   ],
+   "part_fraction": 0.3999,
+   "texture_std": 48.97,
+   "metal_share": 0.23
+  },
+  {
+   "id": "C072",
+   "name": "LED8",
+   "kind": "empty",
+   "bbox_mm": [
+    17.0,
+    60.7,
+    6.3,
+    3.9
+   ],
+   "part_fraction": 0.4945,
+   "texture_std": 48.36,
+   "metal_share": 0.235
+  },
+  {
+   "id": "C073",
+   "name": "R29",
+   "kind": "part",
+   "bbox_mm": [
+    23.3,
+    60.8,
+    5.6,
+    3.1
+   ],
+   "part_fraction": 0.4597,
+   "texture_std": 58.23,
+   "metal_share": 0.372
+  },
+  {
+   "id": "C074",
+   "name": "U2",
+   "kind": "part",
+   "bbox_mm": [
+    36.4,
+    54.1,
+    15.9,
+    15.3
+   ],
+   "part_fraction": 0.4284,
+   "texture_std": 48.01,
+   "metal_share": 0.097
+  },
+  {
+   "id": "C075",
+   "name": "HOLE4",
+   "kind": "empty",
+   "bbox_mm": [
+    10.9,
+    64.8,
+    3.3,
+    3.3
+   ],
+   "part_fraction": 0.348,
+   "texture_std": 46.46,
+   "metal_share": 0.121
+  },
+  {
+   "id": "C076",
+   "name": "J_E",
+   "kind": "empty",
+   "bbox_mm": [
+    2.4,
+    65.9,
+    5.5,
+    4.5
+   ],
+   "part_fraction": 0.4982,
+   "texture_std": 48.73,
+   "metal_share": 0.165
+  },
+  {
+   "id": "C077",
+   "name": "LED5",
+   "kind": "empty",
+   "bbox_mm": [
+    14.6,
+    70.9,
+    6.3,
+    4.1
+   ],
+   "part_fraction": 0.4472,
+   "texture_std": 48.7,
+   "metal_share": 0.231
+  },
+  {
+   "id": "C078",
+   "name": "R25",
+   "kind": "part",
+   "bbox_mm": [
+    23.3,
+    70.0,
+    5.5,
+    3.0
+   ],
+   "part_fraction": 0.477,
+   "texture_std": 57.98,
+   "metal_share": 0.349
+  },
+  {
+   "id": "C079",
+   "name": "R23",
+   "kind": "part",
+   "bbox_mm": [
+    29.4,
+    70.8,
+    3.1,
+    5.8
+   ],
+   "part_fraction": 0.4716,
+   "texture_std": 56.75,
+   "metal_share": 0.334
+  },
+  {
+   "id": "C080",
+   "name": "U1",
+   "kind": "part",
+   "bbox_mm": [
+    4.8,
+    71.7,
+    7.9,
+    12.2
+   ],
+   "part_fraction": 0.6541,
+   "texture_std": 62.8,
+   "metal_share": 0.171
+  },
+  {
+   "id": "C081",
+   "name": "R53",
+   "kind": "part",
+   "bbox_mm": [
+    21.9,
+    74.6,
+    2.9,
+    5.9
+   ],
+   "part_fraction": 0.5102,
+   "texture_std": 56.38,
+   "metal_share": 0.332
+  },
+  {
+   "id": "C082",
+   "name": "J_F1",
+   "kind": "empty",
+   "bbox_mm": [
+    15.4,
+    79.9,
+    3.1,
+    3.1
+   ],
+   "part_fraction": 0.3892,
+   "texture_std": 41.0,
+   "metal_share": 0.158
+  },
+  {
+   "id": "C083",
+   "name": "J_F2",
+   "kind": "empty",
+   "bbox_mm": [
+    17.8,
+    79.8,
+    3.0,
+    3.3
+   ],
+   "part_fraction": 0.4576,
+   "texture_std": 47.24,
+   "metal_share": 0.219
+  },
+  {
+   "id": "C084",
+   "name": "LED7",
+   "kind": "empty",
+   "bbox_mm": [
+    26.3,
+    78.6,
+    6.3,
+    4.4
+   ],
+   "part_fraction": 0.5364,
+   "texture_std": 48.84,
+   "metal_share": 0.206
+  },
+  {
+   "id": "C085",
+   "name": "R55",
+   "kind": "part",
+   "bbox_mm": [
+    2.6,
+    84.0,
+    5.7,
+    3.0
+   ],
+   "part_fraction": 0.4901,
+   "texture_std": 59.92,
+   "metal_share": 0.391
+  },
+  {
+   "id": "C086",
+   "name": "Q2",
+   "kind": "part",
+   "bbox_mm": [
+    37.9,
+    79.8,
+    4.8,
+    5.7
+   ],
+   "part_fraction": 0.4178,
+   "texture_std": 58.87,
+   "metal_share": 0.19
+  },
+  {
+   "id": "C087",
+   "name": "Q3",
+   "kind": "part",
+   "bbox_mm": [
+    43.1,
+    79.7,
+    5.0,
+    5.8
+   ],
+   "part_fraction": 0.4148,
+   "texture_std": 56.06,
+   "metal_share": 0.197
+  },
+  {
+   "id": "C088",
+   "name": "Q4",
+   "kind": "part",
+   "bbox_mm": [
+    48.5,
+    79.7,
+    5.0,
+    5.8
+   ],
+   "part_fraction": 0.4003,
+   "texture_std": 54.78,
+   "metal_share": 0.196
+  },
+  {
+   "id": "C089",
+   "name": "Q8",
+   "kind": "part",
+   "bbox_mm": [
+    54.0,
+    79.7,
+    5.0,
+    5.8
+   ],
+   "part_fraction": 0.391,
+   "texture_std": 54.31,
+   "metal_share": 0.178
+  },
+  {
+   "id": "C090",
+   "name": "Q7",
+   "kind": "part",
+   "bbox_mm": [
+    59.4,
+    79.5,
+    5.1,
+    6.0
+   ],
+   "part_fraction": 0.383,
+   "texture_std": 54.96,
+   "metal_share": 0.195
+  },
+  {
+   "id": "C091",
+   "name": "Q6",
+   "kind": "part",
+   "bbox_mm": [
+    65.3,
+    79.7,
+    4.8,
+    5.8
+   ],
+   "part_fraction": 0.4106,
+   "texture_std": 57.23,
+   "metal_share": 0.186
+  },
+  {
+   "id": "C092",
+   "name": "Q5",
+   "kind": "part",
+   "bbox_mm": [
+    70.7,
+    79.7,
+    5.0,
+    5.9
+   ],
+   "part_fraction": 0.3966,
+   "texture_std": 55.37,
+   "metal_share": 0.185
+  },
+  {
+   "id": "C093",
+   "name": "Q1",
+   "kind": "part",
+   "bbox_mm": [
+    76.2,
+    79.7,
+    5.1,
+    5.9
+   ],
+   "part_fraction": 0.4005,
+   "texture_std": 55.95,
+   "metal_share": 0.207
+  },
+  {
+   "id": "C094",
+   "name": "R2K2_1",
+   "kind": "part",
+   "bbox_mm": [
+    37.8,
+    86.1,
+    5.3,
+    3.4
+   ],
+   "part_fraction": 0.4573,
+   "texture_std": 52.01,
+   "metal_share": 0.371
+  },
+  {
+   "id": "C095",
+   "name": "R2K2_2",
+   "kind": "part",
+   "bbox_mm": [
+    43.2,
+    86.1,
+    5.3,
+    3.5
+   ],
+   "part_fraction": 0.4318,
+   "texture_std": 53.72,
+   "metal_share": 0.37
+  },
+  {
+   "id": "C096",
+   "name": "R2K2_3",
+   "kind": "part",
+   "bbox_mm": [
+    48.6,
+    86.1,
+    5.3,
+    3.2
+   ],
+   "part_fraction": 0.4705,
+   "texture_std": 51.49,
+   "metal_share": 0.377
+  },
+  {
+   "id": "C097",
+   "name": "R2K2_4",
+   "kind": "part",
+   "bbox_mm": [
+    54.1,
+    86.1,
+    5.3,
+    3.3
+   ],
+   "part_fraction": 0.4614,
+   "texture_std": 50.58,
+   "metal_share": 0.394
+  },
+  {
+   "id": "C098",
+   "name": "R2K2_5",
+   "kind": "part",
+   "bbox_mm": [
+    59.5,
+    86.1,
+    5.3,
+    3.3
+   ],
+   "part_fraction": 0.482,
+   "texture_std": 52.35,
+   "metal_share": 0.356
+  },
+  {
+   "id": "C099",
+   "name": "R2K2_6",
+   "kind": "part",
+   "bbox_mm": [
+    65.0,
+    86.1,
+    5.5,
+    3.4
+   ],
+   "part_fraction": 0.4615,
+   "texture_std": 51.17,
+   "metal_share": 0.39
+  },
+  {
+   "id": "C100",
+   "name": "R2K2_7",
+   "kind": "part",
+   "bbox_mm": [
+    70.6,
+    86.1,
+    5.5,
+    3.3
+   ],
+   "part_fraction": 0.4683,
+   "texture_std": 53.5,
+   "metal_share": 0.38
+  },
+  {
+   "id": "C101",
+   "name": "R2K2_8",
+   "kind": "part",
+   "bbox_mm": [
+    76.3,
+    86.1,
+    5.5,
+    3.2
+   ],
+   "part_fraction": 0.4767,
+   "texture_std": 54.81,
+   "metal_share": 0.42
+  },
+  {
+   "id": "C102",
+   "name": "J_G1",
+   "kind": "empty",
+   "bbox_mm": [
+    3.9,
+    87.4,
+    3.4,
+    3.9
+   ],
+   "part_fraction": 0.491,
+   "texture_std": 58.62,
+   "metal_share": 0.461
+  },
+  {
+   "id": "C103",
+   "name": "J_G2",
+   "kind": "empty",
+   "bbox_mm": [
+    8.6,
+    87.2,
+    3.6,
+    4.0
+   ],
+   "part_fraction": 0.3528,
+   "texture_std": 33.13,
+   "metal_share": 0.087
+  },
+  {
+   "id": "C104",
+   "name": "LED4",
+   "kind": "empty",
+   "bbox_mm": [
+    14.5,
+    86.6,
+    6.2,
+    4.3
+   ],
+   "part_fraction": 0.4419,
+   "texture_std": 49.63,
+   "metal_share": 0.265
+  },
+  {
+   "id": "C105",
+   "name": "R24",
+   "kind": "part",
+   "bbox_mm": [
+    20.7,
+    87.0,
+    5.4,
+    3.1
+   ],
+   "part_fraction": 0.4564,
+   "texture_std": 54.6,
+   "metal_share": 0.366
+  },
+  {
+   "id": "C106",
+   "name": "C100N_1",
+   "kind": "part",
+   "bbox_mm": [
+    38.0,
+    89.1,
+    5.1,
+    3.4
+   ],
+   "part_fraction": 0.4481,
+   "texture_std": 47.58,
+   "metal_share": 0.293
+  },
+  {
+   "id": "C107",
+   "name": "C100N_2",
+   "kind": "part",
+   "bbox_mm": [
+    43.3,
+    89.1,
+    5.2,
+    3.4
+   ],
+   "part_fraction": 0.4638,
+   "texture_std": 48.93,
+   "metal_share": 0.302
+  },
+  {
+   "id": "C108",
+   "name": "C100N_3",
+   "kind": "part",
+   "bbox_mm": [
+    48.6,
+    89.0,
+    5.3,
+    3.5
+   ],
+   "part_fraction": 0.4534,
+   "texture_std": 47.69,
+   "metal_share": 0.337
+  },
+  {
+   "id": "C109",
+   "name": "C100N_4",
+   "kind": "part",
+   "bbox_mm": [
+    54.1,
+    89.0,
+    5.3,
+    3.5
+   ],
+   "part_fraction": 0.448,
+   "texture_std": 46.19,
+   "metal_share": 0.325
+  },
+  {
+   "id": "C110",
+   "name": "C100N_5",
+   "kind": "part",
+   "bbox_mm": [
+    59.5,
+    89.0,
+    5.3,
+    3.5
+   ],
+   "part_fraction": 0.455,
+   "texture_std": 47.48,
+   "metal_share": 0.339
+  },
+  {
+   "id": "C111",
+   "name": "C100N_6",
+   "kind": "part",
+   "bbox_mm": [
+    65.1,
+    89.0,
+    5.3,
+    3.5
+   ],
+   "part_fraction": 0.4593,
+   "texture_std": 45.1,
+   "metal_share": 0.346
+  },
+  {
+   "id": "C112",
+   "name": "C100N_7",
+   "kind": "part",
+   "bbox_mm": [
+    70.7,
+    89.0,
+    5.4,
+    3.5
+   ],
+   "part_fraction": 0.4646,
+   "texture_std": 48.88,
+   "metal_share": 0.329
+  },
+  {
+   "id": "C113",
+   "name": "C100N_8",
+   "kind": "part",
+   "bbox_mm": [
+    76.4,
+    89.1,
+    5.4,
+    3.5
+   ],
+   "part_fraction": 0.4693,
+   "texture_std": 48.66,
+   "metal_share": 0.331
+  },
+  {
+   "id": "C114",
+   "name": "C2",
+   "kind": "part",
+   "bbox_mm": [
+    4.9,
+    91.5,
+    5.7,
+    3.3
+   ],
+   "part_fraction": 0.4625,
+   "texture_std": 51.78,
+   "metal_share": 0.346
+  },
+  {
+   "id": "C115",
+   "name": "R26",
+   "kind": "part",
+   "bbox_mm": [
+    27.5,
+    90.9,
+    3.1,
+    5.6
+   ],
+   "part_fraction": 0.4476,
+   "texture_std": 55.64,
+   "metal_share": 0.32
+  },
+  {
+   "id": "C116",
+   "name": "D4148_1",
+   "kind": "part",
+   "bbox_mm": [
+    37.3,
+    92.0,
+    6.0,
+    3.5
+   ],
+   "part_fraction": 0.5157,
+   "texture_std": 66.29,
+   "metal_share": 0.243
+  },
+  {
+   "id": "C117",
+   "name": "D4148_2",
+   "kind": "part",
+   "bbox_mm": [
+    42.7,
+    92.1,
+    6.0,
+    3.8
+   ],
+   "part_fraction": 0.5,
+   "texture_std": 63.59,
+   "metal_share": 0.246
+  },
+  {
+   "id": "C118",
+   "name": "D4148_3",
+   "kind": "part",
+   "bbox_mm": [
+    48.0,
+    92.1,
+    6.0,
+    3.8
+   ],
+   "part_fraction": 0.489,
+   "texture_std": 64.24,
+   "metal_share": 0.239
+  },
+  {
+   "id": "C119",
+   "name": "D4148_4",
+   "kind": "part",
+   "bbox_mm": [
+    53.5,
+    92.1,
+    6.1,
+    3.5
+   ],
+   "part_fraction": 0.5265,
+   "texture_std": 65.88,
+   "metal_share": 0.208
+  },
+  {
+   "id": "C120",
+   "name": "D4148_5",
+   "kind": "part",
+   "bbox_mm": [
+    59.0,
+    92.1,
+    6.0,
+    3.5
+   ],
+   "part_fraction": 0.5267,
+   "texture_std": 66.4,
+   "metal_share": 0.211
+  },
+  {
+   "id": "C121",
+   "name": "D4148_6",
+   "kind": "part",
+   "bbox_mm": [
+    64.5,
+    92.1,
+    6.1,
+    3.5
+   ],
+   "part_fraction": 0.5283,
+   "texture_std": 66.4,
+   "metal_share": 0.215
+  },
+  {
+   "id": "C122",
+   "name": "D4148_7",
+   "kind": "part",
+   "bbox_mm": [
+    70.1,
+    92.2,
+    6.1,
+    3.3
+   ],
+   "part_fraction": 0.5355,
+   "texture_std": 67.77,
+   "metal_share": 0.212
+  },
+  {
+   "id": "C123",
+   "name": "D4148_8",
+   "kind": "part",
+   "bbox_mm": [
+    75.7,
+    92.2,
+    6.2,
+    3.8
+   ],
+   "part_fraction": 0.4809,
+   "texture_std": 64.06,
+   "metal_share": 0.233
+  },
+  {
+   "id": "C124",
+   "name": "R49",
+   "kind": "part",
+   "bbox_mm": [
+    14.9,
+    94.1,
+    2.9,
+    5.7
+   ],
+   "part_fraction": 0.4428,
+   "texture_std": 58.49,
+   "metal_share": 0.373
+  },
+  {
+   "id": "C125",
+   "name": "R43_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    17.4,
+    94.0,
+    2.6,
+    2.8
+   ],
+   "part_fraction": 0.2981,
+   "texture_std": 48.38,
+   "metal_share": 0.286
+  },
+  {
+   "id": "C126",
+   "name": "R44_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    21.0,
+    94.4,
+    2.6,
+    2.5
+   ],
+   "part_fraction": 0.3369,
+   "texture_std": 49.91,
+   "metal_share": 0.543
+  },
+  {
+   "id": "C127",
+   "name": "D16_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    22.9,
+    94.4,
+    3.5,
+    2.8
+   ],
+   "part_fraction": 0.4316,
+   "texture_std": 53.68,
+   "metal_share": 0.352
+  },
+  {
+   "id": "C128",
+   "name": "HOLE5",
+   "kind": "empty",
+   "bbox_mm": [
+    11.4,
+    96.6,
+    3.3,
+    3.6
+   ],
+   "part_fraction": 0.3981,
+   "texture_std": 40.88,
+   "metal_share": 0.123
+  },
+  {
+   "id": "C129",
+   "name": "R43_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    17.4,
+    96.7,
+    2.8,
+    3.0
+   ],
+   "part_fraction": 0.319,
+   "texture_std": 57.11,
+   "metal_share": 0.534
+  },
+  {
+   "id": "C130",
+   "name": "R44_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    20.6,
+    96.9,
+    3.0,
+    3.1
+   ],
+   "part_fraction": 0.3172,
+   "texture_std": 51.0,
+   "metal_share": 0.441
+  },
+  {
+   "id": "C131",
+   "name": "D16_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    23.0,
+    97.0,
+    3.5,
+    3.0
+   ],
+   "part_fraction": 0.3571,
+   "texture_std": 43.23,
+   "metal_share": 0.251
+  },
+  {
+   "id": "C132",
+   "name": "LED6_1",
+   "kind": "empty",
+   "bbox_mm": [
+    26.2,
+    97.1,
+    3.9,
+    1.6
+   ],
+   "part_fraction": 0.3125,
+   "texture_std": 38.3,
+   "metal_share": 0.549
+  },
+  {
+   "id": "C133",
+   "name": "LED6_2",
+   "kind": "empty",
+   "bbox_mm": [
+    27.2,
+    98.0,
+    2.2,
+    2.4
+   ],
+   "part_fraction": 0.3201,
+   "texture_std": 39.2,
+   "metal_share": 0.118
+  },
+  {
+   "id": "C134",
+   "name": "LED6_3",
+   "kind": "empty",
+   "bbox_mm": [
+    29.4,
+    97.1,
+    3.2,
+    3.6
+   ],
+   "part_fraction": 0.3932,
+   "texture_std": 52.17,
+   "metal_share": 0.342
+  },
+  {
+   "id": "C135",
+   "name": "R2",
+   "kind": "part",
+   "bbox_mm": [
+    37.6,
+    95.9,
+    3.2,
+    5.6
+   ],
+   "part_fraction": 0.4291,
+   "texture_std": 54.92,
+   "metal_share": 0.319
+  },
+  {
+   "id": "C136",
+   "name": "R3",
+   "kind": "part",
+   "bbox_mm": [
+    43.1,
+    95.9,
+    3.2,
+    5.6
+   ],
+   "part_fraction": 0.4475,
+   "texture_std": 54.91,
+   "metal_share": 0.342
+  },
+  {
+   "id": "C137",
+   "name": "R4",
+   "kind": "part",
+   "bbox_mm": [
+    48.5,
+    95.9,
+    3.2,
+    5.7
+   ],
+   "part_fraction": 0.4556,
+   "texture_std": 53.19,
+   "metal_share": 0.3
+  },
+  {
+   "id": "C138",
+   "name": "R12",
+   "kind": "part",
+   "bbox_mm": [
+    53.8,
+    95.9,
+    3.2,
+    5.6
+   ],
+   "part_fraction": 0.4492,
+   "texture_std": 54.11,
+   "metal_share": 0.344
+  },
+  {
+   "id": "C139",
+   "name": "R11",
+   "kind": "part",
+   "bbox_mm": [
+    59.5,
+    95.9,
+    2.9,
+    5.7
+   ],
+   "part_fraction": 0.4731,
+   "texture_std": 55.8,
+   "metal_share": 0.306
+  },
+  {
+   "id": "C140",
+   "name": "R10",
+   "kind": "part",
+   "bbox_mm": [
+    64.9,
+    95.9,
+    3.0,
+    5.8
+   ],
+   "part_fraction": 0.4569,
+   "texture_std": 54.96,
+   "metal_share": 0.308
+  },
+  {
+   "id": "C141",
+   "name": "R9",
+   "kind": "part",
+   "bbox_mm": [
+    70.6,
+    95.9,
+    2.8,
+    5.8
+   ],
+   "part_fraction": 0.4649,
+   "texture_std": 57.14,
+   "metal_share": 0.334
+  },
+  {
+   "id": "C142",
+   "name": "R1",
+   "kind": "part",
+   "bbox_mm": [
+    76.2,
+    95.9,
+    2.9,
+    5.8
+   ],
+   "part_fraction": 0.4673,
+   "texture_std": 59.37,
+   "metal_share": 0.337
+  },
+  {
+   "id": "C143",
+   "name": "D13",
+   "bbox_mm": [
+    1.2,
+    95.5,
+    6.1,
+    10.5
+   ],
+   "kind": "part"
+  },
+  {
+   "id": "C144",
+   "name": "D1",
+   "bbox_mm": [
+    7.9,
+    95.5,
+    4.4,
+    10.5
+   ],
+   "kind": "part"
+  },
+  {
+   "id": "C145",
+   "name": "HOLE6",
+   "kind": "empty",
+   "bbox_mm": [
+    11.6,
+    100.8,
+    3.3,
+    3.0
+   ],
+   "part_fraction": 0.3364,
+   "texture_std": 35.39,
+   "metal_share": 0.147
+  },
+  {
+   "id": "C146",
+   "name": "C17_DNP_1",
+   "kind": "empty",
+   "bbox_mm": [
+    14.7,
+    99.5,
+    2.6,
+    3.3
+   ],
+   "part_fraction": 0.3182,
+   "texture_std": 56.23,
+   "metal_share": 0.513
+  },
+  {
+   "id": "C147",
+   "name": "C17_DNP_2",
+   "kind": "empty",
+   "bbox_mm": [
+    17.3,
+    99.5,
+    2.6,
+    3.3
+   ],
+   "part_fraction": 0.3846,
+   "texture_std": 54.63,
+   "metal_share": 0.379
+  },
+  {
+   "id": "C148",
+   "name": "LED20_LED3_RED",
+   "kind": "empty",
+   "bbox_mm": [
+    14.9,
+    102.4,
+    6.3,
+    8.1
+   ],
+   "part_fraction": 0.5242,
+   "texture_std": 51.84,
+   "metal_share": 0.279
+  },
+  {
+   "id": "C149",
+   "name": "R28",
+   "kind": "part",
+   "bbox_mm": [
+    20.8,
+    103.5,
+    3.1,
+    5.5
+   ],
+   "part_fraction": 0.4598,
+   "texture_std": 55.62,
+   "metal_share": 0.353
+  },
+  {
+   "id": "C150",
+   "name": "R52",
+   "kind": "part",
+   "bbox_mm": [
+    25.5,
+    101.9,
+    3.1,
+    5.8
+   ],
+   "part_fraction": 0.4889,
+   "texture_std": 56.42,
+   "metal_share": 0.385
+  },
+  {
+   "id": "C151",
+   "name": "PIN_L1",
+   "kind": "empty",
+   "bbox_mm": [
+    2.5,
+    108.7,
+    3.1,
+    3.4
+   ],
+   "part_fraction": 0.4326,
+   "texture_std": 43.44,
+   "metal_share": 0.434
+  },
+  {
+   "id": "C152",
+   "name": "PIN_L2",
+   "kind": "empty",
+   "bbox_mm": [
+    5.1,
+    108.8,
+    3.0,
+    3.1
+   ],
+   "part_fraction": 0.3699,
+   "texture_std": 43.58,
+   "metal_share": 0.41
+  },
+  {
+   "id": "C153",
+   "name": "PIN_L3",
+   "kind": "empty",
+   "bbox_mm": [
+    7.5,
+    108.6,
+    3.1,
+    3.3
+   ],
+   "part_fraction": 0.3822,
+   "texture_std": 45.6,
+   "metal_share": 0.407
+  },
+  {
+   "id": "C154",
+   "name": "PIN_L4",
+   "kind": "empty",
+   "bbox_mm": [
+    10.2,
+    109.0,
+    2.9,
+    2.9
+   ],
+   "part_fraction": 0.3341,
+   "texture_std": 51.2,
+   "metal_share": 0.395
+  },
+  {
+   "id": "C155",
+   "name": "MH3",
+   "kind": "empty",
+   "bbox_mm": [
+    33.4,
+    107.8,
+    4.9,
+    5.1
+   ],
+   "part_fraction": 0.5118,
+   "texture_std": 63.82,
+   "metal_share": 0.0
+  },
+  {
+   "id": "C156",
+   "name": "J1_1",
+   "kind": "empty",
+   "bbox_mm": [
+    43.6,
+    109.0,
+    2.8,
+    3.3
+   ],
+   "part_fraction": 0.3268,
+   "texture_std": 50.15,
+   "metal_share": 0.288
+  },
+  {
+   "id": "C157",
+   "name": "J1_2",
+   "kind": "empty",
+   "bbox_mm": [
+    45.8,
+    109.1,
+    3.2,
+    3.2
+   ],
+   "part_fraction": 0.3613,
+   "texture_std": 49.29,
+   "metal_share": 0.378
+  },
+  {
+   "id": "C158",
+   "name": "J1_3",
+   "kind": "empty",
+   "bbox_mm": [
+    48.3,
+    109.0,
+    3.1,
+    3.3
+   ],
+   "part_fraction": 0.3998,
+   "texture_std": 48.06,
+   "metal_share": 0.315
+  },
+  {
+   "id": "C159",
+   "name": "J1_4",
+   "kind": "empty",
+   "bbox_mm": [
+    50.7,
+    109.0,
+    3.2,
+    3.4
+   ],
+   "part_fraction": 0.398,
+   "texture_std": 47.25,
+   "metal_share": 0.356
+  },
+  {
+   "id": "C160",
+   "name": "J1_5-8",
+   "kind": "empty",
+   "bbox_mm": [
+    53.2,
+    109.0,
+    10.4,
+    3.4
+   ],
+   "part_fraction": 0.4652,
+   "texture_std": 52.1,
+   "metal_share": 0.428
+  },
+  {
+   "id": "C161",
+   "name": "J1_9",
+   "kind": "empty",
+   "bbox_mm": [
+    63.1,
+    108.9,
+    3.4,
+    3.7
+   ],
+   "part_fraction": 0.4754,
+   "texture_std": 51.25,
+   "metal_share": 0.289
+  },
+  {
+   "id": "C162",
+   "name": "MH4",
+   "kind": "empty",
+   "bbox_mm": [
+    74.1,
+    107.8,
+    4.9,
+    5.2
+   ],
+   "part_fraction": 0.4816,
+   "texture_std": 64.97,
+   "metal_share": 0.006
+  },
+  {
+   "id": "C163",
+   "name": "HOLE7",
+   "kind": "empty",
+   "bbox_mm": [
+    78.7,
+    111.6,
+    3.3,
+    3.4
+   ],
+   "part_fraction": 0.451,
+   "texture_std": 44.32,
+   "metal_share": 0.338
+  }
+ ]
+}

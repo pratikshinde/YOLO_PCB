@@ -1,0 +1,51 @@
+# Product profile: LG Indicator
+#
+# One folder per product (docs/inspection_architecture.md):
+#   product.yaml            identity and physical facts of the product (this file)
+#   variants/<variant>.yaml alignment, quality, inspection engine and golden-bank settings per variant
+#   golden/golden_bank.yaml where the GOOD reference boards of this product come from (a BANK, not one image)
+#   regions/regions.yaml    inspection regions (component, LED, connector, trace, hole regions)
+#   inspection_rules.yaml   enabled defect types, severities and decision thresholds
+#
+# null = UNKNOWN. Facts below are copied from the verified answers recorded in
+# configs/profiles/lg_indicator/variant_1.yaml (Production/PCB mentor, 2026-10-02); a test keeps the two equal.
+
+product_id: lg_indicator
+name: "LG Indicator"
+revision: null                    # PCB-03: "single" revision; its identifier was not given
+default_variant: variant_1
+variants: [variant_1]
+
+board:
+  length_mm: 116                  # PCB-04 "83 x 116 mm"
+  width_mm: 83
+  thickness_mm: 1.6               # PCB-06
+  inspection_side: top            # PCB-07
+  orientation: null               # canonical orientation is defined by the golden reference image, not documented
+  allowed_rotation_deg: 30        # PROVISIONAL: = alignment_validation.max_rotation_deg of the reference baseline
+
+stages: [after_smt_reflow, after_tht]   # PRD-06 (partially clarified); a third stage is UNKNOWN
+
+appearance:
+  colour_variants: [blue, red, green]   # PCB-18: same PCB, colour depends on availability; list completeness UNKNOWN
+  colour_is_variant: false              # colour is a visual variation, not a separate variant or model
+
+# Where this product's data lives (paths relative to the project root).
+# 2026-10-06 reset: all earlier image data (Experiment 0 / 1B / 2, station captures, live captures, the watermarked
+# golden reference) was ARCHIVED to archive/2026-10-06_pre_collection_reset/ (manifest.csv) and is not used.
+# Data collection starts clean in data/collection/ (python scripts/collect.py, docs/clean_data_collection.md).
+storage:
+  root: data/products/lg_indicator      # station inspections, human reviews, reports
+  acquisition_root: data/collection     # clean GOOD / FAULT data collection (scripts/collect.py)
+  layout:                               # folders inside acquisition_root
+    acquisition: originals              # originals/<type>/<board>/<session>/session.json, images/, pcb/
+    curated: ""                         # KEEP copies directly under good/ and fault/
+    quarantine: quarantine              # REJECT copies: quarantine/<type>/...
+  dataset_types: [good, fault]          # collected in this phase; TEST PCB is added later
+  require_capture_check: true           # only capture configs with a pcb_check section may write here
+  registry: data/collection/registry    # physical board registry (boards.csv); not created yet
+  legacy_sources:                       # earlier LG data outside the collection store: none (archived)
+    - {type: production_raw, path: data/raw}                       # production-track capture folders (empty)
+
+identification:
+  auto: true                            # may be identified automatically (needs golden references)

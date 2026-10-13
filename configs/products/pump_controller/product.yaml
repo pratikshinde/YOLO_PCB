@@ -1,0 +1,38 @@
+# Product profile: Pump Controller
+#
+# Named by the project as a future product (2026-10-05). NOTHING else is known yet: every fact is null (UNKNOWN).
+# No images, boards or references exist. Until golden references are added this product:
+#   - cannot be identified automatically (identification needs its golden references),
+#   - can be selected by the operator, but every inspection is REVIEW ("no golden references"),
+#   - is never compared with another product's references.
+# To make it inspectable: fill in the facts, collect GOOD boards (scripts/acquire.py --product pump_controller),
+# register them (boards.csv), choose a geometric reference and draw its regions. No code change is needed.
+
+product_id: pump_controller
+name: "Pump Controller"
+revision: null
+default_variant: variant_1
+variants: [variant_1]
+
+board:
+  length_mm: null
+  width_mm: null
+  thickness_mm: null
+  inspection_side: null
+  orientation: null
+  allowed_rotation_deg: null
+
+stages: null
+
+appearance:
+  colour_variants: null
+  colour_is_variant: null
+
+storage:
+  root: data/products/pump_controller
+  acquisition_root: null            # null = storage.root
+  registry: null                    # null = <storage.root>/dataset
+  legacy_sources: []
+
+identification:
+  auto: true

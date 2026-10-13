@@ -1,0 +1,1 @@
+defect_id,board_id,side,defect_type,component_refdes,location_description,severity,origin,verified_by,visible_in_images,electrical_test_result,notes

@@ -1,0 +1,6 @@
+# EXAMPLE ONLY. Copy into the folder with the photos and rename it:
+#   raw\red\removed\R01\R01_missing.txt                 (a board with missing parts)
+#   raw\red\removed\R21\step2\R21_step2_missing.txt     (step-by-step boards: one file per step folder)
+# Content: ALL parts missing in the photos of that folder, separated by commas. Case does not matter.
+# Never list R50, R32, Q11, D14, R43, R44, D16, C17 (not fitted, not checked).
+Q9, R12

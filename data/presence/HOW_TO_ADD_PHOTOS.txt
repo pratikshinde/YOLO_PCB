@@ -1,0 +1,118 @@
+HOW TO ADD PHOTOS FOR THE COMPONENT PRESENCE CHECK
+===================================================
+(LG Indicator, red board, SMT stage. See planner.md for the why.)
+
+
+1. FOLDER STRUCTURE
+-------------------
+
+data\presence\
+    golden\red\                                  3 careful photos of ONE good red board (the golden reference)
+
+    raw\red\good\                                ALL good boards in ONE folder, NO text file.
+        R02_01.jpg  R02_02.jpg ... R02_06.jpg      file name starts with the board ID
+        R03_01.jpg  R03_02.jpg ...                 (a sub-folder per board, raw\red\good\R02\, works too)
+
+    raw\red\removed\R01\                         a board with missing parts: ~6 photos
+    raw\red\removed\R01\R01_missing.txt            + the missing-parts file
+
+    raw\red\removed\R21\step1\                   a board you desolder step by step: one folder per step
+    raw\red\removed\R21\step1\R21_step1_missing.txt   (empty file, or no file: nothing missing yet)
+    raw\red\removed\R21\step2\                     photos after the 1st removal
+    raw\red\removed\R21\step2\R21_step2_missing.txt   parts missing in THESE photos
+    raw\red\removed\R21\step3\R21_step3_missing.txt   ...
+
+    raw\red\bare\R31\                            unpopulated PCBs (no parts at all), NO text file needed
+    test\red\good\R41\                           TEST boards: other boards, photographed LAST, never used for training
+    test\red\removed\R45\R45_missing.txt         test board with missing parts
+
+Board IDs: write a number on the BACK of every board with a marker (R01, R02, ... R = red).
+Why the ID matters even for good boards: the 6 photos of one board are almost the same picture. The program
+uses the ID to keep all photos of a board together - all in training, or all in the check set - otherwise
+the model is tested on a board it has already seen and the result looks better than it is.
+A board is in good OR removed OR test, never in two of them.
+Photo file names: good boards: <board ID>_<number>.jpg (R02_01.jpg ...). Boards in their own folder
+(removed, test): keep the names the phone gives. Never edit the picture itself.
+
+NOTE 2026-10-09 - what the first data turned out to be: the good photos R_01 ... R_43 carry only a photo number, no board ID.
+The program recognised from the pictures themselves that they are only 6 boards (R_01-07, R_08-14, R_15-21, R_22-28,
+R_29-37, R_38-43; see ml\presence\board_groups.json, where they are called G01 ... G06) and that none of them is one of the
+removed boards m_01 ... m_04. So the data holds 10 different boards, not 47. Do not rename these photos.
+For NEW good boards use ONE ID per physical board, the same on all of its photos, e.g. G07_01.jpg, G07_02.jpg (board G07),
+then G08_01.jpg ... A new board counts as ONE board however many photos it has: 7 more different boards help the model far
+more than 70 more photos of the boards that are already here.
+
+
+2. THE MISSING-PARTS FILE
+-------------------------
+
+RULE: every folder of photos that shows missing parts gets ONE text file in the SAME folder as the photos:
+
+    name:      <board id>_missing.txt               e.g.  R01_missing.txt
+               <board id>_<step>_missing.txt        e.g.  R21_step2_missing.txt   (step-by-step boards)
+    content:   the names of ALL parts that are missing in the photos of that folder,
+               separated by commas (spaces and new lines are fine too)
+
+Example: raw\red\removed\R01\R01_missing.txt
+
+    Q9, R12
+
+Example: raw\red\removed\R21\step3\R21_step3_missing.txt  (everything missing at step 3, also the parts
+removed at step 2)
+
+    R12, C14, Q4, D11, R31,
+    U1, R2K2_5, C100N_3, D4148_6, R45
+
+Rules:
+- Upper / lower case does not matter (q9 = Q9). Use the names of the list in section 3.
+- NEVER list R50, R32, Q11, D14 (never fitted in this variant), R43, R44, D16, C17, LEDs, SW1, SW2:
+  they are not checked. A line starting with # is a comment.
+- Good boards: no file. Bare boards (no parts at all): no file, the folder says it.
+- If a part is only half removed (tilted, standing on one end, hanging on one pad), finish removing it before
+  you take the photos - for now we teach only "present" and "missing".
+- If you are not sure which part is missing, do not use that board.
+
+
+3. THE 86 PART NAMES THAT ARE CHECKED
+-------------------------------------
+
+Resistors (printed on the board):
+    R1, R2, R3, R4, R9, R10, R11, R12, R13, R18, R19, R21, R22, R23, R24, R25, R26, R27, R28, R29,
+    R30, R31, R34, R35, R36, R37, R38, R39, R40, R42, R45, R48, R49, R51, R52, R53, R54, R55, R56,
+    R57, R58, R59, R60
+Capacitors:   C2, C14, C16
+Diodes:       D1, D11, D12, D13 (D13 = the MB10S bridge)
+Transistors:  Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10
+ICs:          U1 (78M05 regulator), U2 (microcontroller)
+
+The three unlabelled rows under the transistors (labels "R_2K2", "100nF", "D_4148" on the left):
+    R2K2_1 ... R2K2_8      the "222" resistor row
+    C100N_1 ... C100N_8    the tan capacitor row
+    D4148_1 ... D4148_8    the "1F4" diode row
+    Numbering: hold the board like the golden photo (header pins at the BOTTOM).
+    _1 is the LEFT-most one (under Q2), _8 the RIGHT-most one (under Q1):
+        column:   1    2    3    4    5    6    7    8
+        above:    Q2   Q3   Q4   Q8   Q7   Q6   Q5   Q1
+
+NOT checked (never write them in missing.txt):
+    R50, R32, Q11, D14         never fitted in this variant
+    R43, R44, D16, C17         not fitted on the golden (to be confirmed)
+    all LEDs, SW1, SW2, the header, the holes   (empty at the SMT stage)
+
+
+4. HOW EVERY PHOTO MUST LOOK
+----------------------------
+
+- DO NOT CROP. Keep the background around the board. All four board edges must be inside the photo with
+  a little background around them (about 1 - 3 cm). The program finds the board edges itself; if the
+  photo is cut exactly at the board edge (or cuts into it), the board cannot be found reliably.
+- Do not rotate, edit, filter, compress or resize the photos. Save the original from the phone.
+- The board fills about 60 - 80 % of the photo (phone 20 - 30 cm above the board), straight from above.
+- Plain background that is NOT red, blue or green: white paper, a grey table or black cloth.
+- No flash. No lamp shining straight on the board (reflections hide parts). Daylight or room light.
+- Tap on the board to focus, hold the phone still, the photo must be sharp.
+- Camera: the in-app camera of our app, or the phone camera at full resolution, 1x (no zoom), no filter,
+  no portrait / beauty mode.
+- Vary between the ~6 photos of a board: turn the board (0 / 90 / 180 / 270 degrees), a slightly different
+  height, a different place in the photo, a different light (day / evening).
+- Golden photos (golden\red\): the same rules, but take the 3 best ones you can: sharp, even light, straight.

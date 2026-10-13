@@ -1,0 +1,41 @@
+# Experiment 1: PCB alignment + golden-reference comparison (classical baseline, no learning)
+#
+# All thresholds here are EXPERIMENT PARAMETERS chosen to measure natural
+# variation between good boards. They are not validated inspection limits and
+# must not be read as PASS / FAIL criteria.
+#
+# Run:  python scripts/run_experiment_001.py --reference <image_id|path> --test <image_id|path> [...]
+
+experiment: experiment_001
+profile: lg_indicator/variant_1
+canonical_px_per_mm: 20          # canonical board frame: 83 x 116 mm -> 1660 x 2320 px
+
+board_segmentation:              # same colour-based board finder as the image-quality check
+  saturation_min: 60
+  value_min: 40
+  hue_tolerance: 12
+
+registration:
+  detector: sift                 # sift | akaze | orb
+  working_max_side_px: 2400      # features computed on a downscaled copy
+  max_features: 8000
+  ratio_test: 0.75
+  ransac_threshold_px: 3.0       # at working resolution
+  mask_erosion_fraction: 0.01    # ignore a thin strip along the board edge (background leaks into descriptors)
+  min_inliers: 30
+
+residuals:                       # independent check of alignment: phase correlation per tile
+  tile_mm: 6.0
+  min_std: 4.0
+  min_response: 0.15
+
+comparison:
+  illumination: global           # none | global (L gain+offset, a/b offset) | l_only
+  blur_sigma_mm: 0.05
+  border_margin_mm: 1.5
+  ssim_sigma_px: 1.5
+  edge_tolerance_mm: 0.25
+  delta_e_threshold: 20.0        # candidate if colour difference exceeds this ...
+  dissimilarity_threshold: 0.25  # ... or structural dissimilarity exceeds this
+  min_region_mm2: 0.5
+  open_kernel_mm: 0.2

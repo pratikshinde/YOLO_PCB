@@ -1,0 +1,5 @@
+reference_id,test_id,test_board,same_board,registration_ok,inliers,inlier_ratio,inlier_rmse_mm,residual_median_mm,residual_p90_mm,residual_max_mm,reliable_tiles,ssim_mean,delta_e_mean,delta_e_p99,fraction_delta_e_over_20,edge_mismatch_fraction,candidate_regions,candidate_area_mm2,candidate_area_fraction,largest_candidate_mm2,total_seconds
+S20261002-01_C003,S20261002-01_C001,GOOD_001,True,True,1991,0.852,0.0585,0.0405,0.1045,1.0882,239/247,0.9184,5.57,29.96,0.0295,0.1535,72,233.4,0.0258,36.8,2.9
+S20261002-01_C003,S20261002-01_C002,GOOD_001,True,True,2676,0.888,0.064,0.042,0.1143,0.3636,243/247,0.9454,3.76,19.28,0.0087,0.1099,17,25.1,0.0028,4.8,2.6
+S20261002-01_C003,S20261002-02_C001,GOOD_001,True,True,1989,0.832,0.0622,0.0532,0.1282,0.9582,245/247,0.9252,5.0,24.17,0.0184,0.1567,47,117.4,0.013,10.8,2.6
+S20261002-01_C003,S20261002-03_C001,GOOD_002,False,True,506,0.691,0.0608,0.0492,0.1133,1.0202,233/247,0.7987,18.46,73.45,0.3087,0.4542,258,2454.5,0.2726,907.8,3.1

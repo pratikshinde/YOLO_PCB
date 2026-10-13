@@ -1,0 +1,149 @@
+[
+  {
+    "photo": "R_03.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_03.jpg",
+    "board": "good_R_03",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_05.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_05.jpg",
+    "board": "good_R_05",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_06.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_06.jpg",
+    "board": "good_R_06",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_07.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_07.jpg",
+    "board": "good_R_07",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_08.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_08.jpg",
+    "board": "good_R_08",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_15.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_15.jpg",
+    "board": "good_R_15",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (193 inliers, ratio 0.25) - retake photo"
+  },
+  {
+    "photo": "R_19.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_19.jpg",
+    "board": "good_R_19",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (180 inliers, ratio 0.23) - retake photo"
+  },
+  {
+    "photo": "R_20.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_20.jpg",
+    "board": "good_R_20",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (182 inliers, ratio 0.24) - retake photo"
+  },
+  {
+    "photo": "R_21.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_21.jpg",
+    "board": "good_R_21",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_22.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_22.jpg",
+    "board": "good_R_22",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (149 inliers, ratio 0.24) - retake photo"
+  },
+  {
+    "photo": "R_23.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_23.jpg",
+    "board": "good_R_23",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_31.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_31.jpg",
+    "board": "good_R_31",
+    "kind": "good",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "R_34.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_34.jpg",
+    "board": "good_R_34",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (167 inliers, ratio 0.24) - retake photo"
+  },
+  {
+    "photo": "R_35.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_35.jpg",
+    "board": "good_R_35",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (159 inliers, ratio 0.24) - retake photo"
+  },
+  {
+    "photo": "R_36.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\R_36.jpg",
+    "board": "good_R_36",
+    "kind": "good",
+    "reason": "Cannot align with the golden reference (150 inliers, ratio 0.24) - retake photo"
+  },
+  {
+    "photo": "IMG_20261009_123822_510.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_02\\IMG_20261009_123822_510.jpg",
+    "board": "m_02",
+    "kind": "removed",
+    "reason": "Cannot align with the golden reference (163 inliers, ratio 0.25) - retake photo"
+  },
+  {
+    "photo": "IMG_20261009_123824_050.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_02\\IMG_20261009_123824_050.jpg",
+    "board": "m_02",
+    "kind": "removed",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "IMG_20261009_123916_748.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_02\\IMG_20261009_123916_748.jpg",
+    "board": "m_02",
+    "kind": "removed",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "IMG_20261009_123917_275.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_02\\IMG_20261009_123917_275.jpg",
+    "board": "m_02",
+    "kind": "removed",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "IMG_20261009_124116_819.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_04\\IMG_20261009_124116_819.jpg",
+    "board": "m_04",
+    "kind": "removed",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  },
+  {
+    "photo": "IMG_20261009_124149_023.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_04\\IMG_20261009_124149_023.jpg",
+    "board": "m_04",
+    "kind": "removed",
+    "reason": "Board not completely visible (touches the image edge) - retake"
+  }
+]

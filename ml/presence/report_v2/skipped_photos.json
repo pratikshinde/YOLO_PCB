@@ -1,0 +1,44 @@
+[
+  {
+    "photo": "IMG_20261010_121651_048_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\P12\\IMG_20261010_121651_048_HDR.jpg",
+    "board": "P12",
+    "reason": "Image too blurred (sharpness 21 < 25) - retake"
+  },
+  {
+    "photo": "IMG_20261010_122446_604_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\P14\\IMG_20261010_122446_604_HDR.jpg",
+    "board": "P14",
+    "reason": "board not completely visible"
+  },
+  {
+    "photo": "IMG_20261010_122647_377_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\P3\\IMG_20261010_122647_377_HDR.jpg",
+    "board": "P3",
+    "reason": "Board not completely visible (aspect 1.83, expected 1.40) - retake"
+  },
+  {
+    "photo": "IMG_20261010_122613_618_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\P7\\IMG_20261010_122613_618_HDR.jpg",
+    "board": "P7",
+    "reason": "board not completely visible"
+  },
+  {
+    "photo": "IMG_20261010_122606_619_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\good\\P8\\IMG_20261010_122606_619_HDR.jpg",
+    "board": "P8",
+    "reason": "board not completely visible"
+  },
+  {
+    "photo": "IMG_20261010_122906_744_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\raw\\red\\removed\\m_05\\IMG_20261010_122906_744_HDR.jpg",
+    "board": "m_05",
+    "reason": "Board not completely visible (aspect 1.77, expected 1.40) - retake"
+  },
+  {
+    "photo": "IMG_20261010_130118_086_HDR.jpg",
+    "path": "D:\\Projects\\YOLO_PCB_Componet\\data\\presence\\test\\red\\IMG_20261010_130118_086_HDR.jpg",
+    "board": "TEST",
+    "reason": "Board not completely visible (aspect 1.63, expected 1.40) - retake"
+  }
+]

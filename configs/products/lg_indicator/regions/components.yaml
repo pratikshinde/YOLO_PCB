@@ -1,0 +1,565 @@
+# Component map of LG Indicator / variant_1 on the clean reference (scripts/setup_reference.py).
+# STATUS: DRAFT, NOT VERIFIED: the Experiment 2 draft boxes (mm) re-attached unchanged to the new
+# clean reference (same board design and frame). No BOM / centroid file exists. Verify / correct:
+#     python scripts/define_components.py
+component_map_version: 2
+frame: 'canonical board frame of the reference image (Experiment 1/2 pipeline): mm, origin top-left, x right, y down'
+profile: lg_indicator/variant_1
+reference:
+  image_id: GOOD_001_TOP_S20261006-03_C007
+  file: data/collection/originals/good/GOOD_001/S20261006-03/images/GOOD_001_TOP_S20261006-03_C007.png
+  sha256: ee4691053d0a35467272773d3e8a65c1ed24f71d7da1dbc6e839de5055c3406b
+canonical_size_mm:
+- 116.0
+- 83.0
+components:
+- refdes: C2
+  box_mm:
+  - 22.4
+  - 4.55
+  - 25.25
+  - 9.7
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: C14
+  box_mm:
+  - 68.35
+  - 19.75
+  - 73.8
+  - 22.5
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: C16
+  box_mm:
+  - 105.05
+  - 55.05
+  - 107.75
+  - 59.8
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: D11
+  box_mm:
+  - 70.75
+  - 3.25
+  - 74.0
+  - 12.65
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: D13
+  box_mm:
+  - 11.0
+  - 1.1
+  - 20.35
+  - 6.75
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: LED4
+  box_mm:
+  - 26.5
+  - 14.15
+  - 32.35
+  - 20.35
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: LED5
+  box_mm:
+  - 42.3
+  - 14.7
+  - 46.15
+  - 20.7
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: LED6
+  box_mm:
+  - 14.8
+  - 26.4
+  - 19.6
+  - 32.45
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: LED7
+  box_mm:
+  - 32.35
+  - 26.55
+  - 38.5
+  - 32.45
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: LED8
+  box_mm:
+  - 52.6
+  - 17.25
+  - 57.9
+  - 23.1
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q2
+  box_mm:
+  - 32.2
+  - 37.95
+  - 37.1
+  - 42.25
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q3
+  box_mm:
+  - 32.4
+  - 43.75
+  - 37.1
+  - 47.65
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q4
+  box_mm:
+  - 32.45
+  - 49.15
+  - 37.15
+  - 52.95
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q6
+  box_mm:
+  - 32.6
+  - 65.1
+  - 37.2
+  - 69.25
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q8
+  box_mm:
+  - 32.4
+  - 54.1
+  - 37.25
+  - 58.35
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q9
+  box_mm:
+  - 66.45
+  - 14.95
+  - 70.4
+  - 17.65
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: Q10
+  box_mm:
+  - 61.7
+  - 12.9
+  - 65.3
+  - 17.65
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R1
+  box_mm:
+  - 16.15
+  - 75.75
+  - 21.5
+  - 78.35
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R2
+  box_mm:
+  - 15.45
+  - 37.5
+  - 21.3
+  - 40.05
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R3
+  box_mm:
+  - 15.6
+  - 43.0
+  - 21.15
+  - 45.55
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R4
+  box_mm:
+  - 15.65
+  - 48.45
+  - 21.2
+  - 50.9
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R9
+  box_mm:
+  - 16.15
+  - 70.65
+  - 21.35
+  - 72.85
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R10
+  box_mm:
+  - 15.95
+  - 65.0
+  - 21.25
+  - 67.5
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R11
+  box_mm:
+  - 15.9
+  - 59.25
+  - 21.3
+  - 61.9
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R12
+  box_mm:
+  - 15.8
+  - 53.9
+  - 21.2
+  - 56.3
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R13
+  box_mm:
+  - 106.45
+  - 8.5
+  - 111.8
+  - 11.05
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R18
+  box_mm:
+  - 59.8
+  - 23.5
+  - 63.3
+  - 28.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R19
+  box_mm:
+  - 52.85
+  - 4.65
+  - 58.4
+  - 7.8
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R21
+  box_mm:
+  - 101.3
+  - 14.05
+  - 105.55
+  - 19.1
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R22
+  box_mm:
+  - 56.65
+  - 23.5
+  - 59.55
+  - 28.85
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R23
+  box_mm:
+  - 40.9
+  - 29.6
+  - 46.4
+  - 32.1
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R24
+  box_mm:
+  - 26.8
+  - 20.6
+  - 31.65
+  - 25.85
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R25
+  box_mm:
+  - 44.35
+  - 23.45
+  - 47.3
+  - 28.45
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R26
+  box_mm:
+  - 20.65
+  - 26.95
+  - 27.65
+  - 30.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R27
+  box_mm:
+  - 92.9
+  - 13.9
+  - 96.2
+  - 19.0
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R29
+  box_mm:
+  - 52.95
+  - 23.45
+  - 56.3
+  - 28.7
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R30
+  box_mm:
+  - 74.9
+  - 28.95
+  - 80.1
+  - 31.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R31
+  box_mm:
+  - 94.5
+  - 29.7
+  - 97.1
+  - 34.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R35
+  box_mm:
+  - 96.55
+  - 13.9
+  - 99.7
+  - 19.0
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R36
+  box_mm:
+  - 99.9
+  - 34.5
+  - 104.8
+  - 37.05
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R37
+  box_mm:
+  - 107.55
+  - 46.2
+  - 110.35
+  - 51.4
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R38
+  box_mm:
+  - 76.75
+  - 11.95
+  - 79.6
+  - 17.8
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R39
+  box_mm:
+  - 79.35
+  - 45.9
+  - 81.95
+  - 50.9
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R40
+  box_mm:
+  - 71.3
+  - 46.25
+  - 74.0
+  - 50.9
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R42
+  box_mm:
+  - 102.7
+  - 55.05
+  - 104.95
+  - 59.75
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R45
+  box_mm:
+  - 63.4
+  - 23.45
+  - 66.4
+  - 28.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R48
+  box_mm:
+  - 75.05
+  - 25.5
+  - 80.25
+  - 28.0
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R51
+  box_mm:
+  - 87.0
+  - 39.4
+  - 91.95
+  - 41.8
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R52
+  box_mm:
+  - 9.05
+  - 25.45
+  - 14.85
+  - 28.1
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R53
+  box_mm:
+  - 36.9
+  - 21.8
+  - 42.3
+  - 24.5
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R55
+  box_mm:
+  - 30.0
+  - 2.5
+  - 32.6
+  - 5.6
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R59
+  box_mm:
+  - 80.35
+  - 27.9
+  - 83.1
+  - 32.7
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: R60
+  box_mm:
+  - 83.15
+  - 15.75
+  - 85.55
+  - 18.8
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: U1
+  box_mm:
+  - 33.15
+  - 4.95
+  - 45.1
+  - 12.45
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED
+- refdes: U2
+  box_mm:
+  - 48.25
+  - 36.5
+  - 62.7
+  - 52.05
+  source: assistant_draft
+  verified: false
+  note: draft box of the archived reference GOOD_UNASSIGNED_TOP_S20261005-01_C001, unchanged (mm), re-attached to GOOD_001_TOP_S20261006-03_C007;
+    NOT VERIFIED

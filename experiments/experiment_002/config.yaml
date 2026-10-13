@@ -1,0 +1,131 @@
+# Experiment 2: GOOD reference + alignment + component-level comparison (missing components)
+#
+# ARCHIVED 2026-10-06 (clean data collection reset, docs/clean_data_collection.md): the reference_image below,
+# its calibration, the runs/ results and every image of this experiment were moved to
+# archive/2026-10-06_pre_collection_reset/. The reference had the DroidCam watermark burned in over LED4 and must
+# not be used again. This file is kept as the record of the experiment and as the algorithm config of the
+# REFERENCE_BASELINE engine (the product engine replaces reference / calibration from golden_bank.yaml). The
+# Experiment 2 scripts (inspect_pcb.py, live_inspection.py) stop with "reference not found" until a new clean
+# reference is chosen from data/collection/good/.
+#
+# Deterministic, classical image processing; nothing is trained (docs/experiment_plan.md, E2).
+# Alignment / canonical frame are exactly the Experiment 1 pipeline and parameters.
+# Thresholds are EXPERIMENT PARAMETERS, not validated inspection limits.
+#
+# Run:   python scripts/inspect_pcb.py                 (every image in input_dir)
+#        python scripts/inspect_pcb.py <image|folder>  (given images)
+# Boxes: python scripts/define_components.py           (draw / verify component boxes on the reference)
+
+experiment: experiment_002
+profile: lg_indicator/variant_1
+
+# Geometric reference: a curated GOOD image. It defines the canonical board frame; the component map is drawn on
+# exactly this image (checked by SHA-256). Appearance comes from the GOOD reference SET below, not from this image alone.
+reference_image: data/curated/good/UNASSIGNED/S20261005-01/GOOD_UNASSIGNED_TOP_S20261005-01_C001.png
+component_map: experiments/experiment_002/components.yaml
+cache_dir: data/processed/experiment_002     # derived data only (aligned GOOD images), safe to delete
+
+# GOOD reference set = every curated GOOD image of the PHYSICAL boards that the board registry puts in this split.
+# A part is "present" when it looks like the same part on ANY of these GOOD examples. When a board of the set is
+# itself inspected, ALL images of that board are left out (leave-one-board-out), so it is judged as a new board.
+reference_set:
+  registry: data/dataset/boards.csv              # physical boards: condition, split, ground-truth defects
+  image_boards: data/dataset/image_boards.csv    # image -> board for images captured without a board ID
+  split: reference
+  # Per-component limits (natural GOOD variation of each part), from scripts/calibrate_reference.py.
+  # Used only when computed from at least min_boards physical GOOD boards; otherwise the global limit
+  # component_check.min_similarity applies. Never computed from TEST / validation boards.
+  calibration: experiments/experiment_002/reference_calibration.json
+  min_boards: 5
+  margin: 0.05                                   # limit = lowest leave-one-board-out GOOD similarity - margin
+
+input_dir: data/testing/input      # drop test images here
+output_dir: data/testing/output    # one folder per inspected image: report.txt, result.json, annotated.jpg, evidence.jpg
+
+canonical_px_per_mm: 20            # canonical board frame: 116 x 83 mm -> 2320 x 1660 px (as Experiment 1)
+
+board_segmentation:                # = Experiment 1
+  saturation_min: 60
+  value_min: 40
+  hue_tolerance: 12
+
+registration:                      # = Experiment 1
+  detector: sift
+  working_max_side_px: 2400
+  max_features: 8000
+  ratio_test: 0.75
+  ransac_threshold_px: 3.0
+  mask_erosion_fraction: 0.01
+  min_inliers: 30
+
+residuals:                         # = Experiment 1 (required by the shared pipeline config; not used here)
+  tile_mm: 6.0
+  min_std: 4.0
+  min_response: 0.15
+
+comparison:                        # = Experiment 1 (required by the shared pipeline config; not used here)
+  illumination: global
+  blur_sigma_mm: 0.05
+  border_margin_mm: 1.5
+  ssim_sigma_px: 1.5
+  edge_tolerance_mm: 0.25
+  delta_e_threshold: 20.0
+  dissimilarity_threshold: 0.25
+  min_region_mm2: 0.5
+  open_kernel_mm: 0.2
+
+# Method v2 (README, section "Runs"). Run 1 used a bare-board rule set a priori; it found neither reported defect.
+# v2 was chosen AFTER that failure, with exploratory studies on the same images: results on the DEFECT / TEST
+# images are therefore not an independent validation.
+component_check:
+  search_mm: 0.5                   # local shift search (residual misalignment ~0.07 mm; parallax of tall parts)
+  search_step_mm: 0.1
+  similarity_blur_mm: 0.2          # compare the coarse layout; marking text ("222" vs "2201") differs between lots
+  min_similarity: 0.735            # MISSING below this best similarity to a GOOD example. = lowest cross-board GOOD value
+                                   # (board A images vs board B examples and vice versa: 0.785) - 0.05 margin
+  min_bare_board_increase: null    # bare-board cue: information only (empty footprints here show pads, not solder mask)
+  min_usable_fraction: 0.6         # otherwise NOT CHECKED (box outside the aligned area / under an ignored region)
+  saturation_min: 60               # solder-mask colour = board segmentation definition
+  value_min: 40
+  hue_tolerance: 12
+
+# Further static regions of the SOURCE image that are not board content (none at present).
+ignore_source_regions_px: []
+
+# DroidCam free-edition watermark "using droidcam.app". Same text and size in every frame, but its position
+# MOVES between DroidCam sessions (measured 2026-10-05 at 2560 x 1440):
+#   session 12:49-12:56 (curated GOOD/DEFECT/TEST): glyphs x 376-975, y 343-381  normalised [0.1469, 0.2382, 0.3809, 0.2646]
+#   session 13:59-14:21 (436 live frames):          glyphs x 784-1382, y 58-94   normalised [0.3063, 0.0403, 0.5398, 0.0653]
+# It is therefore LOCATED IN EVERY FRAME by matching its letter shapes (template), and only the letter pixels
+# (+ dilate_px) are inpainted / excluded. Not found (score / margin too low) -> nothing is masked.
+# Template: python scripts/debug_watermark.py --measure <frames of one session> --box ...  Check: debug_watermark.py <images>
+# (Supersedes the fixed box + droidcam_watermark_mask.png used up to run 2, which only fitted the 12:49 session.)
+watermark:
+  enabled: true
+  template: experiments/experiment_002/droidcam_watermark_template.png   # 598 x 36 px glyph mask, 436 live frames
+  template_frame_width: 2560       # scaled for other capture widths (only verified at 2560 x 1440)
+  search_region: [0.0, 0.0, 1.0, 1.0]   # normalised x0, y0, x1, y1: whole frame (the position moves)
+  min_score: 0.45                  # matches found 2026-10-05: 0.53-0.80
+  min_margin: 0.10                 # best vs best elsewhere in the frame: >= 0.19 in all 53 frames checked
+  dilate_px: 2
+
+# Stage gates (geometry / image validity; NOT defect thresholds). Ranges observed 2026-10-05 on the curated images
+# and on live frames where a whole, upright board was in view: board-colour area 0.41-0.72 of the frame (frames
+# without a board <= 0.05); inlier ratio 0.43-0.91; fit error <= 0.13 mm.
+pcb_presence:
+  min_mean_brightness: 10          # darker frame (camera covered / no light) -> INVALID_FRAME; uniform frames too
+  min_board_area_fraction: 0.10    # largest board-colour region / frame; smaller -> NO_PCB
+
+alignment_validation:
+  min_inlier_ratio: 0.25           # below -> ALIGNMENT_FAILED
+  max_fit_error_mm: 0.25           # RANSAC inlier error, below -> ALIGNMENT_FAILED
+  frame_margin_fraction: 0.005     # board corners (from the homography) must be inside the frame by this much
+  max_rotation_deg: 30             # vs the reference orientation; e.g. upside down -> PCB_POSITION_INVALID
+  max_corner_angle_deviation_deg: 20   # board seen at a steep angle -> PCB_POSITION_INVALID
+  min_board_width_fraction: 0.25   # board long side / frame width; smaller -> PCB_POSITION_INVALID (too far / small)
+
+inspection_decision:
+  # More differing parts than this at once is not a credible defect pattern on one board (hand / object over the
+  # board, wrong board, side or stage, local misalignment): INSPECTION_ERROR with the list, never PASS.
+  # Chosen from the defect scope, after seeing live frames with a hand over the board (52 parts differing).
+  max_plausible_defects: 5

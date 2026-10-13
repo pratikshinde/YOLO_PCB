@@ -1,0 +1,53 @@
+# Inspection system settings: product-agnostic (docs/inspection_architecture.md).
+#
+# Everything specific to one PCB product lives in its profile: configs/products/<product_id>/.
+# Adding a product = adding a profile folder (and its golden reference data); no code change.
+# Same conventions as configs/project.yaml: null = UNKNOWN; provisional values are marked PROVISIONAL.
+
+products_dir: configs/products
+
+# --- Storage ------------------------------------------------------------------------------------
+# Every capture is saved FIRST (original, lossless, SHA-256 verified) in the capture store, before the
+# product is known, then identified and inspected. Originals are never moved, overwritten or deleted.
+storage:
+  capture_store: data/captures                 # data/captures/<session_id>/<image_id>.png + <image_id>.json
+  default_product_root: data/products          # a product without storage.root uses data/products/<product_id>
+  unresolved_product_root: data/products/_unresolved   # inspections whose product could not be determined
+  # Derived data (re-creatable from originals): never counted as captures by the dataset validation.
+  derived_paths:
+    - data/processed
+    - data/testing/live_output
+    - data/testing/output
+    - data/products/*/inspections
+    - data/products/*/reports
+
+# --- Product identification ---------------------------------------------------------------------
+# AUTO: the capture is registered (SIFT/RANSAC) against the geometric golden reference of every product
+# that has one; a product is identified only if it registers (placement outside the allowed rotation still
+# counts: the inspection then gives REVIEW for the placement) AND the evidence clears the limits below AND no
+# other product matches about as well. Otherwise: REVIEW (unknown / ambiguous product).
+# A product without golden references cannot be identified automatically (operator selection only).
+identification:
+  default_selection: AUTO                      # AUTO or a product_id
+  min_inlier_ratio: 0.40                       # PROVISIONAL: same-product boards measured 0.43-0.91 (experiments/experiment_002/config.yaml); never validated against a second product (no Pump Controller images exist)
+  min_inliers: 30                              # PROVISIONAL: = registration.min_inliers of the reference baseline
+  min_ratio_margin: 0.15                       # PROVISIONAL: best vs second-best product inlier ratio; closer -> ambiguous -> REVIEW
+
+# --- Image quality gate -------------------------------------------------------------------------
+# Measured on the saved original. A blocking flag means the image cannot support a decision:
+# REVIEW (reason: image quality), never DEFECT. Non-blocking flags are recorded only.
+quality:
+  blocking_flags: [missing, unreadable, board_not_detected, underexposed, glare_or_overexposed, blurry]
+
+# --- Live station (scripts/station.py) ----------------------------------------------------------
+# Automatic capture: a capture is taken when a PCB is in view and the picture has been still for
+# settle_s; the next capture needs the board to be removed (or the scene to change) first.
+station:
+  camera_config: configs/capture/droidcam_e1b.yaml     # camera index / resolution / quality thresholds of this station
+  presence_every_s: 0.5
+  settle_s: 1.5                                # PROVISIONAL
+  still_max_mean_abs_diff: 6.0                 # PROVISIONAL: mean |difference| of 320 px grey previews, 0-255
+  removed_after_s: 1.0                         # PROVISIONAL: NO PCB this long -> ready for the next board
+  presence:                                    # "is a board in view?" on preview frames (board-coloured area); product-agnostic
+    min_mean_brightness: 10                    # = experiments/experiment_002/config.yaml pcb_presence (observed 2026-10-05)
+    min_board_area_fraction: 0.10

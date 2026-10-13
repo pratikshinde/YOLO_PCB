@@ -1,0 +1,213 @@
+# PCB Pre-Test Visual Inspection: project configuration
+#
+# Convention
+#   null  = UNKNOWN / TO BE CONFIRMED. Never replace a null with a guess.
+#           Fill a value only when it is confirmed by the production/PCB team or
+#           measured on the real setup, and note the source in a comment.
+#   Ambiguous answers stay null and are recorded verbatim under
+#   `needs_clarification` until they are clarified.
+#   Values that are set without a question ID are project-side protocol
+#   decisions taken in docs/ (e.g. lossless images, split by physical board).
+#   Comments like "# PRD-07" refer to docs/production_questions.md.
+#
+# Project-wide settings live here. Everything specific to one PCB model/variant
+# lives in its inspection profile: configs/profiles/<model>/<variant>.yaml.
+#
+# Readiness gates, clarifications and unknowns:   python scripts/check_readiness.py
+
+project:
+  config_version: 2
+  phase: foundation              # no models, no training data yet
+  answers_source: "Production/PCB mentor, 2026-10-02 (two rounds)"
+
+# --- Two operating modes (docs/requirements.md, section 2) -------------------
+# INSPECTION MODE (final product, not implemented yet):
+#   place PCB -> camera -> AI inspection -> PASS / FAIL / REVIEW (+ defect type,
+#   location, confidence, annotated image on FAIL). The operator types nothing.
+# DEVELOPMENT / DATASET MODE (now): images plus metadata for experiments; the
+#   metadata is collected automatically wherever possible (scripts/e0_ingest.py).
+inspection_mode:
+  operator_inputs: []                  # nothing is typed per inspection
+  profile_source: station_config       # profiles.active; barcode / MES could select it later
+  stage_source: null                   # recipe / operator selection / PLC-MES / station config: not decided
+  board_identity: automatic_inspection_id   # inspection ID + timestamp; barcode / serial later (PCB-21)
+  colour: not_an_input                 # the inspection must tolerate colour; never selected by the operator
+
+# --- Inspection profiles (docs/pcb_inspection_spec.md, section 2) ------------
+profiles:
+  directory: configs/profiles
+  active: lg_indicator/variant_1
+  available: [lg_indicator/variant_1]
+
+# --- Production line (Phase 2) -----------------------------------------------
+production:
+  current_scope: "1 PCB variant"   # PRD-02; software stays configurable for more profiles
+  boards_per_day: null           # PRD-01
+  electrical_test_time_s: null   # PRD-03
+  inspection_time_budget_s: null # PRD-04
+  throughput_boards_per_hour: null  # PRD-05
+  # PRD-06 inspection stages are board-specific: see inspection_stages in the profile
+  existing_inspection: manual    # PRD-07 "Manual inspection"
+  station_space: null            # PRD-08
+  positioning: manual            # PRD-09 "Manual"
+  conveyor: null                 # PRD-10 not specified
+  ambient_lighting: null         # PRD-11
+  trigger: null                  # PRD-12
+  loading: manual                # PRD-13 "Manual"
+  two_side_handling: not_applicable  # PRD-14: top side only in current scope
+  pass_fail_signaling: null      # PRD-15
+  fail_review_handling: null     # PRD-16
+  operator_available: true       # PRD-17
+  max_review_rate: null          # PRD-17
+  integration: null              # PRD-18
+  board_identification: none_in_current_scope  # PRD-19; may be considered in future
+  result_storage_required: true  # PRD-20
+  result_storage_location: null  # PRD-20 (local storage is allowed, PRD-25)
+  result_retention: null         # PRD-20
+  traceability: null             # PRD-21
+  escape_rate_target: null       # PRD-22  defective board -> PASS
+  false_call_rate_target: null   # PRD-22  good board -> FAIL
+  error_costs: null              # PRD-23  escape vs false call vs review
+  compute_constraints: null      # PRD-24 production constraints; prototype compute: station.prototype
+  it_security:                   # PRD-25
+    restrictions_reported: false # "No restrictions reported"
+    local_storage_allowed: true
+    cloud: null                  # "not currently defined"
+  esd_rules:                     # PRD-27
+    mentor_special_restrictions: false  # mentor: "No rules." -> no special restrictions reported by the mentor
+    company_policy: null         # UNKNOWN unless documented; NOT "no policy"
+  hardware_budget: null          # PRD-26
+  acceptance_signoff: null       # PRD-28
+  fallback_when_down: null       # PRD-29
+
+# --- Capture station hardware -------------------------------------------------
+station:
+  location: null                 # IMG-05; pilot near the line is possible (DATA-07)
+  prototype:                     # Experiment 0 only (mentor, 2026-10-02); NOT production imaging
+    camera: mobile_phone         # IMG-01
+    capture_config: configs/capture/mobile_phone_e0.yaml
+    compute:                     # PRD-24 "NVIDIA RTX 5050 GPU system"
+      gpu: "NVIDIA RTX 5050"
+      gpu_memory_gb: null        # not provided
+      cpu: null
+      ram_gb: null
+      os: null
+  production:                    # all still UNKNOWN
+    camera:
+      model: null                # IMG-01 production camera UNKNOWN
+      sensor_resolution_px: null # [width, height]
+      pixel_size_um: null
+      color: null                # color / mono
+      shutter: null              # global / rolling
+      bit_depth: null
+      interface: null            # e.g. GigE Vision / USB3 Vision
+    lens: null                   # IMG-02 "not decided yet"
+    lighting: null               # IMG-03 "not decided yet"
+    enclosure: null              # IMG-03 "not decided yet"
+    mounting: null               # IMG-04 "not decided yet"
+    working_distance_mm: null    # IMG-04 "not decided yet"
+    capture_pc: null             # IMG-06
+    calibration_targets: null    # IMG-07
+
+# --- Acquisition protocol (applies to every profile) -------------------------
+acquisition:
+  # Production-representative capture. The Experiment 0 phone images follow
+  # configs/capture/mobile_phone_e0.yaml instead and are kept separate.
+  allowed_image_formats: [png, tiff]   # protocol: lossless only, JPEG not permitted
+  in_camera_processing: false          # protocol: no sharpening / denoise / HDR / resizing
+  auto_exposure: false                 # protocol: must stay off
+  auto_gain: false                     # protocol: must stay off
+  auto_white_balance: false            # protocol: must stay off
+  focus_locked: true                   # protocol: focus and aperture locked
+  calibration_per_session: [geometric_target, grey_reference, control_board]
+
+# --- Data protocol (Phases 4-6) ----------------------------------------------
+data:
+  root: data
+  board_id_format: "GOOD_### | DEFECT_###"   # prefix = intake pool, kept for life
+  filename_format: "<board_id>_<side>_<session_id>_<capture_id>.<ext>"
+  split:
+    created: false                     # no splits while raw data are being collected
+    group_by: board_id                 # protocol: never split images of one physical board across splits
+    stratify_by: [pcb_variant, condition, board_colour, inspection_stage]
+    ratios:                            # proposal 0.6 / 0.2 / 0.2, confirm once dataset size is known
+      train: null
+      val: null
+      test: null
+    seed: null
+
+defects:
+  taxonomy:                            # project vocabulary, see requirements.md section 5
+    - missing_component
+    - damaged_component
+    - misaligned_component
+    - wrong_component
+    - wrong_polarity
+    - missing_or_damaged_lead
+    - broken_trace
+    - missing_trace
+    - damaged_pcb
+    - solder_defect
+    - foreign_object
+    - other_anomaly
+
+# --- Ambiguous line-level answers (verbatim) ---------------------------------
+# None open at line level. PRD-06 (inspection stages) moved to the profile;
+# PRD-27 company ESD policy is a plain UNKNOWN (production.esd_rules.company_policy).
+needs_clarification: []
+
+# --- Progress (facts about project work; set to true when done) --------------
+progress:
+  experiment_0_images_collected: false
+  experiment_0_images_inspected: false
+  production_dataset_v1_collected: false
+
+# --- Readiness gates (evaluated by scripts/check_readiness.py) ---------------
+# A gate is READY when every required value is known: not null, not false and
+# not empty. Paths starting with "profile:" refer to the active inspection
+# profile; all others to this file.
+readiness_gates:
+  experiment_0_phone_capture:
+    description: "Experiment 0: real mobile-phone capture of the LG Indicator"
+    requires:
+      - station.prototype.camera
+      - station.prototype.capture_config
+      - profile:pcb.model
+      - profile:pcb.dimensions_mm.long_side
+      - profile:pcb.dimensions_mm.short_side
+      - profile:inspection_stages.confirmed
+      - profile:appearance_variations.board_colour.reported_values
+      - profile:data_availability.experiment_0_good_board_available
+      - profile:data_availability.experiment_0_defective_board_available
+      - profile:data_availability.ground_truth_verifier
+  production_camera_selection:
+    description: "Select the production camera, lens and lighting"
+    requires:
+      - progress.experiment_0_images_inspected
+      - profile:pcb.smallest_feature_to_detect_mm         # PCB-29
+      - station.location                                  # IMG-05
+      - production.ambient_lighting                       # PRD-11
+      - production.inspection_time_budget_s               # PRD-04
+      - production.throughput_boards_per_hour             # PRD-05
+  production_dataset_v1:
+    description: "Capture the production-representative dataset"
+    requires:
+      - station.production.camera.model                   # IMG-01
+      - station.production.lens                           # IMG-02
+      - station.production.lighting                       # IMG-03
+      - station.production.enclosure                      # IMG-03
+      - station.production.mounting                       # IMG-04
+      - station.production.working_distance_mm            # IMG-04
+      - station.production.calibration_targets            # IMG-07
+      - profile:pcb.holes.feature_type                    # PCB-17 (fixture / alignment)
+      - profile:pcb.holes.coordinates_mm                  # PCB-17
+      - profile:data_availability.good_status_basis       # DATA-01
+      - profile:data_availability.good_boards_photographable  # DATA-01
+  model_development:
+    description: "Model experiments E1-E6 (no model work before this gate)"
+    requires:
+      - progress.experiment_0_images_inspected
+      - progress.production_dataset_v1_collected
+      - production.escape_rate_target                     # PRD-22
+      - production.false_call_rate_target                 # PRD-22
+      - profile:defect_scope.frequency                    # PCB-24

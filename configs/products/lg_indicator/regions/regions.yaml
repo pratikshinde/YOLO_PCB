@@ -1,0 +1,12 @@
+# Inspection regions of LG Indicator / variant_1, in the canonical board frame (mm, origin top-left).
+#
+# Coordinates are never invented: a region type without a source stays empty (null).
+
+component_regions:
+  file: configs/products/lg_indicator/regions/components.yaml   # 55 boxes, DRAFT, NOT VERIFIED (no BOM / centroid file: PCB-11, PCB-12)
+  verified: false
+led_regions: null          # LEDs are in the component map where a designator is printed; a separate LED map does not exist
+connector_regions: null    # not defined
+trace_regions: null        # PCB-20: outer-layer traces to inspect UNKNOWN
+hole_regions: null         # PCB-17: 3 positions have holes, coordinates / type NEED CLARIFICATION
+ignore_regions: null       # none besides the engine's watermark handling

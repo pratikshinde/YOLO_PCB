@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+**/.venv/
+venv/
+**/venv/
+.pytest_cache/
+build/
+**/build/
+dist/
+**/dist/
+*.cache
+*.pkl
+**/_scratch/
+
+# ML / YOLO / Model weights and runs
+runs/
+**/runs/
+**/runs_*/
+weights/
+models/
+archive/
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.engine
+*.bin
+
+# ML Datasets, crops, and caches
+ml/**/crops/
+ml/**/crops_*/
+ml/**/datasets/
+ml/**/datasets_*/
+ml/**/cache/
+ml/**/bench/
+ml/**/final/
+ml/**/results/
+ml/**/models/
+
+# Dataset image assets (large binary photo folders)
+data/raw/
+data/processed/
+data/acquisition/
+data/curated/
+data/quarantine/
+data/testing/
+data/collection/
+data/captures/
+data/products/
+data/presence/golden/
+data/presence/raw/
+data/presence/test/
+data/presence/augmented/
+
+# Node / Android / Expo
+node_modules/
+**/node_modules/
+.expo/
+**/.expo/
+.gradle/
+**/.gradle/
+android_app/android/
+android_app/dist/
+android_app/web-build/
+*.apk
+*.aab
+
+# OS & Notebooks
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/

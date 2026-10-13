@@ -1,0 +1,66 @@
+# Prototype capture configuration: mobile phone, Experiment 0 ONLY
+#
+# The mentor decided (2026-10-02) to use a mobile phone camera for the first
+# capture experiment. This is NOT the production camera; production camera,
+# lens, lighting, working distance, mount and enclosure are still UNKNOWN
+# (configs/project.yaml, station.production). Images taken with this
+# configuration are never part of the production-representative dataset
+# (data/raw, data/metadata).
+#
+# Camera-first workflow (development / dataset mode):
+#   1. copy the original photos into data/experiment_0/inbox/
+#   2. python scripts/e0_ingest.py      (IDs, EXIF metadata, checksum, filing, quality check: automatic)
+# Re-check everything later: python scripts/check_e0_images.py
+# Protocol: docs/experiment_0_camera_visibility.md
+# Checklist: docs/experiment_0_capture_checklist.md
+#
+# null = UNKNOWN. Values marked PROVISIONAL are starting points for the
+# quality-check tool, not validated limits; adjust them after the first images
+# have been inspected. They only prompt a re-take of a photo. They are NOT
+# inspection acceptance thresholds, which remain UNKNOWN (PRD-22, decision_engine).
+
+capture_config_id: mobile_phone_e0
+purpose: experiment_0_camera_visibility   # not production imaging
+profile: lg_indicator/variant_1
+data_dir: data/experiment_0
+inbox_dir: data/experiment_0/inbox          # drop original photos here; sub-folder GOOD_001/ etc. = optional board ID
+
+device:
+  type: mobile_phone
+  model: null                    # read automatically from each photo's EXIF (camera_device)
+
+phone_settings:                  # protocol for every capture (false = switched off)
+  resolution: highest_available
+  mode: normal_photo             # no portrait / night / pro presets, no beauty
+  portrait_background_blur: false
+  filters: false
+  digital_zoom: false            # 1x main camera; move the phone instead of zooming
+  flash: false                   # flash causes strong glare on solder and glossy parts
+  hdr_or_scene_optimizer: off_if_possible   # record in notes if it cannot be switched off
+  file_format: jpeg_highest_quality         # e.g. "Most compatible" instead of HEIC on iPhone
+  transfer: original_file_by_cable_or_original_quality_export   # never via messaging apps
+
+setup:                           # recommended physical setup; nothing here is typed per image
+  mount: phone_stand_or_fixed_support     # not hand-held if avoidable
+  background: matte_white_or_light_grey   # plain, larger than the board, not blue/red/green, not wood
+  # Optional session context, given once per ingest run (never per image):
+  #   --stage after_smt_reflow|after_tht   --distance-mm 300   --lighting "ceiling LED"   --board GOOD_001
+  # Omitted values are recorded as unknown.
+
+allowed_image_formats: [jpg, jpeg, png, tif, tiff]   # readable by the quality check; no HEIC/DNG
+
+quality_check:
+  min_megapixels: null           # depends on the smallest feature (PCB-29, UNKNOWN)
+  min_sharpness: null            # absolute sharpness is not comparable across setups
+  relative_sharpness_min: 0.5    # PROVISIONAL: flag images < 50 % of the median sharpness of the same board
+  near_black_level: 5
+  near_white_level: 250
+  max_near_white_fraction: 0.02  # PROVISIONAL: share of near-white (glare / clipped) pixels on the board
+  max_near_black_fraction: 0.05  # PROVISIONAL: share of near-black pixels on the board
+  board_detection:               # heuristic: board found by its own colour (dominant hue in the image centre)
+    saturation_min: 60           # PROVISIONAL
+    value_min: 40                # PROVISIONAL
+    hue_tolerance: 12            # PROVISIONAL, Pillow 0-255 hue scale (~17 deg); separates red board from brown wood
+    line_fraction_min: 0.10      # PROVISIONAL
+    min_margin_fraction: 0.01    # PROVISIONAL: board closer than 1 % of the image size to an edge = possible crop
+    max_aspect_error: 0.10       # PROVISIONAL: detected board shape vs 116 x 83 mm

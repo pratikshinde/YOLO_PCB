@@ -1,0 +1,8 @@
+# Inspection regions of Pump Controller / variant_1: none defined (no reference image, no BOM / centroid data).
+
+component_regions: null
+led_regions: null
+connector_regions: null
+trace_regions: null
+hole_regions: null
+ignore_regions: null

@@ -1,0 +1,30 @@
+# LG Indicator / variant_1 (the only variant: PCB-02 "1")
+#
+# The inspection engine is the experimental REFERENCE_BASELINE (Experiment 2: alignment to a GOOD reference +
+# per-component comparison with a bank of GOOD boards). Its algorithm parameters (watermark, registration,
+# component check) stay in its experiment config; this file says which PRODUCT data it uses.
+
+variant_id: variant_1
+variant_label: "1"
+revision: null
+
+engine:
+  type: REFERENCE_BASELINE              # model-agnostic: YOLO / anomaly backends can be registered later
+  status: EXPERIMENTAL                  # not validated; see experiments/experiment_002/README.md
+  config: experiments/experiment_002/config.yaml
+
+golden: golden/golden_bank.yaml          # relative to the product folder
+regions: regions/regions.yaml
+rules: inspection_rules.yaml
+
+# Alignment gate: a value here overrides the engine config's alignment_validation; null = use the engine config.
+# Beyond these limits the result is REVIEW (alignment), never DEFECT. Max rotation = product.yaml board.allowed_rotation_deg.
+alignment:
+  min_inlier_ratio: 0.25                 # PROVISIONAL (observed 0.43-0.91 on whole, upright boards)
+  max_fit_error_mm: 0.25                 # PROVISIONAL (observed <= 0.13 mm)
+  frame_margin_fraction: null
+  max_corner_angle_deviation_deg: null
+  min_board_width_fraction: null
+
+quality:
+  capture_config: configs/capture/droidcam_e1b.yaml   # quality_check thresholds of the current (phone) station: PROVISIONAL

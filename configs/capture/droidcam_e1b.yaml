@@ -1,0 +1,131 @@
+# Prototype capture configuration: phone as a LIVE camera (DroidCam), Experiment 1B
+#
+# Camera-first acquisition: the phone (Xiaomi Redmi 12 5G, stated by the
+# project team) streams to the PC through DroidCam; the acquisition application
+# captures, names, checks and files every image. Nothing is photographed on the
+# phone or transferred by hand.
+#
+#   python scripts/acquire.py
+#
+# This is NOT the production camera. Production camera, lens, lighting, mount
+# and enclosure are still UNKNOWN (configs/project.yaml, station.production).
+# Images taken with this configuration are kept in data/acquisition/,
+# data/curated/ and data/quarantine/, separate from data/raw/ (production
+# track) and data/experiment_0/ (phone photos).
+#
+# Guide: docs/experiment_1b_camera_acquisition.md
+# null = UNKNOWN. Values marked PROVISIONAL are starting points, not validated limits.
+
+capture_config_id: droidcam_e1b
+purpose: experiment_1b_controlled_capture   # prototype, not production imaging
+profile: lg_indicator/variant_1
+
+device:
+  type: mobile_phone_live_camera
+  model: "Xiaomi Redmi 12 5G"     # stated by the project team (2026-10-05)
+  connection: DroidCam
+
+camera:
+  # OpenCV device index (DirectShow order). List the devices and test one with:
+  #   python scripts/check_camera.py --list        python scripts/check_camera.py
+  # On this PC (2026-10-05, python scripts/check_camera.py):
+  #   0 = "Integrated Camera" (laptop webcam): opens, but sent only blank frames (covered / switched off)
+  #   1 = "DroidCam Video" (the Redmi phone over USB): 2560 x 1440 at ~33 FPS, real picture.
+  #       Opens only while the DroidCam PC client is running and streaming.
+  # Override for one run: python scripts/acquire.py --camera-index 0
+  index: 1
+  backend: dshow                  # DirectShow: cv2.VideoCapture(index, cv2.CAP_DSHOW); its order matches the device names
+  connect_on_start: true          # open the configured camera when the application starts
+  requested_width: 1920           # requested, not assumed: the delivered size is recorded per image
+                                  # (DroidCam ignores the request and sends the resolution set in its client:
+                                  #  2560 x 1440 measured 2026-10-05; camera 0 follows it, ~24 FPS)
+  requested_height: 1080
+  requested_fps: 30
+  resolution_choices: [[1920, 1080], [1280, 720], [640, 480]]
+  read_failures_before_disconnect: 15
+  frozen_after_s: 3.0             # PROVISIONAL: no pixel change for this long = frozen stream, no captures.
+                                  # If FROZEN appears although the picture is live, raise it or set null (off).
+  reconnect_every_s: 2.0
+  fresh_frame_timeout_s: 2.0      # a capture waits at most this long for a frame newer than the countdown end
+
+image_format: png                 # lossless copy of the frame as delivered (project protocol: no lossy re-encoding)
+
+paths:                            # relative to data/
+  acquisition: acquisition        # originals + session.json, never modified
+  curated: curated                # KEEP
+  quarantine: quarantine          # REJECT
+
+session:
+  default_image_count: 10
+  max_image_count: 500
+  default_interval_s: 3
+  min_interval_s: 1
+  default_review_mode: after_each   # after_each: review every image before the next countdown; after_session: queue
+  inspection_area_fraction: 0.8     # preview guide only (never drawn on saved images): board-shaped frame, 80 % of the view
+
+review:
+  reject_reasons:
+    - blurry
+    - pcb_not_fully_visible
+    - bad_alignment
+    - obstruction
+    - reflection
+    - wrong_board
+    - wrong_stage
+    - duplicate
+    - operator_mistake
+    - other
+
+# DEFECT PCB sessions: operator choice -> project taxonomy (configs/project.yaml, defects.taxonomy).
+# null = no exact taxonomy equivalent; the operator's choice is stored as given and not reinterpreted.
+defect_types:
+  missing_component: missing_component
+  damaged_component: damaged_component
+  broken_component: null          # NEEDS CLARIFICATION: not in the taxonomy (damaged_component?); not mapped by guess
+  wrong_component: wrong_component
+  broken_trace: broken_trace
+  missing_trace: missing_trace
+  solder_defect: solder_defect
+  component_misalignment: misaligned_component
+  other: other_anomaly
+
+guidance:
+  good:
+    title: "GOOD PCB CAPTURE"
+    steps:
+      - "STEP 1: Place a VERIFIED GOOD PCB."
+      - "STEP 2: Ensure the complete PCB is visible."
+      - "STEP 3: Keep the camera and lighting stable."
+      - "STEP 4: Capture multiple controlled views/placements."
+      - "Keep the board within the inspection area (dashed frame)."
+  defect:
+    title: "DEFECT PCB CAPTURE"
+    steps:
+      - "Place a VERIFIED DEFECTIVE PCB under the camera."
+      - "Ensure the complete PCB is visible."
+      - "If the defect is known, record it below. If not, choose UNKNOWN."
+      - "Defect information is annotation, not verified ground truth."
+  test:
+    title: "TEST PCB CAPTURE"
+    steps:
+      - "Place an UNSEEN PCB for evaluation under the camera."
+      - "Do not label this PCB as GOOD or DEFECT."
+      - "It is stored strictly as TEST and kept out of the curated GOOD / DEFECT data."
+
+# Image-quality check (pcb_inspection.image_quality, same checks as Experiment 0).
+# Flags are evidence for the human review; an image is never deleted because of a flag.
+quality_check:
+  min_megapixels: null           # depends on the smallest feature (PCB-29, UNKNOWN)
+  min_sharpness: null            # absolute sharpness is not comparable across setups
+  relative_sharpness_min: 0.5    # PROVISIONAL: flag captures < 50 % of the median sharpness of the session
+  near_black_level: 5
+  near_white_level: 250
+  max_near_white_fraction: 0.02  # PROVISIONAL
+  max_near_black_fraction: 0.05  # PROVISIONAL
+  board_detection:
+    saturation_min: 60           # PROVISIONAL
+    value_min: 40                # PROVISIONAL
+    hue_tolerance: 12            # PROVISIONAL
+    line_fraction_min: 0.10      # PROVISIONAL
+    min_margin_fraction: 0.01    # PROVISIONAL
+    max_aspect_error: 0.10       # PROVISIONAL

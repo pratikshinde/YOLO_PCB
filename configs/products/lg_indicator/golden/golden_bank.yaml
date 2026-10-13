@@ -1,0 +1,28 @@
+# Golden reference BANK of LG Indicator / variant_1.
+#
+# Not one golden image: every physical GOOD board that the board registry puts in the reference split is part of
+# the bank, with all its kept images. An image is judged against ALL GOOD boards; a board that is itself in the
+# bank is judged against the OTHER boards only (leave-one-board-out). So GOOD_002 is never compared with GOOD_001
+# alone, and GOOD_001 is never "the" golden board.
+#
+# RESET 2026-10-06: the previous geometric reference (watermark over LED4) and its calibration are ARCHIVED
+# (archive/2026-10-06_pre_collection_reset/) and must NOT be used.
+# New clean reference (set by python scripts/setup_reference.py --apply, 2026-10-06): a KEPT GOOD capture of the clean
+# collection that passed every automatic clean-reference check (python scripts/collection_summary.py
+# --verify-reference); LED4 visible on the verification sheet. The GOOD boards of the bank come from the board
+# registry data/collection/registry/boards.csv (split reference). FAULT boards are never in it.
+# EXPERIMENTAL: results are not validated (docs/clean_data_collection.md, section "Testing a PCB").
+
+geometric_reference: data/collection/originals/good/GOOD_001/S20261006-03/images/GOOD_001_TOP_S20261006-03_C007.png
+reference_split: reference
+min_boards: 2                            # Experiment 2: "A single golden board is not enough"; fewer -> every result REVIEW
+calibration: null                        # was experiments/experiment_002/reference_calibration.json (archived: watermarked bank)
+calibration_min_boards: 5
+cache_dir: data/processed/products/lg_indicator   # derived (GOOD images aligned into the reference frame); safe to delete
+# Placement orientation of GOOD images accepted INTO THE BANK as comparison examples. 2026-10-06: back to the
+# inspection limit (product.yaml board.allowed_rotation_deg = 30). Measured on the clean collection: a GOOD board
+# photographed 180 deg rotated is registered correctly (fit 0.05 mm), but lit from the other side its parts look
+# different: upright GOOD_001 vs rotated GOOD_003 only -> 30 of 55 parts "differ"; and a missing LED4 (FAULT_005)
+# matched a rotated GOOD_003 LED4 above the limit. Rotated GOOD images stay in the dataset; they are only skipped as
+# examples (listed as skipped). Place every board the same way round as the reference.
+max_rotation_deg: 30

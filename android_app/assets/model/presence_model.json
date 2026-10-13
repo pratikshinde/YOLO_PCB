@@ -1,0 +1,98 @@
+{
+ "name": "presence_cls_E10_expnorm",
+ "architecture": "YOLO11n-cls",
+ "trained": "2026-10-12",
+ "experiment": "E10_expnorm",
+ "input_size": 128,
+ "classes": [
+  "missing",
+  "present"
+ ],
+ "missing_index": 0,
+ "crop_margin_mm": 1.5,
+ "px_per_mm": 20,
+ "exposure_norm": true,
+ "exposure_target_luma": 107.595,
+ "exposure_gain_min": 0.6,
+ "exposure_gain_max": 1.7,
+ "threshold": 0.35,
+ "doubt": 0.1,
+ "max_flagged": 20,
+ "windows_default": 9,
+ "window_combine": "median",
+ "window_offsets_mm": [
+  [
+   0.0,
+   0.0
+  ],
+  [
+   0.4,
+   0.0
+  ],
+  [
+   -0.4,
+   0.0
+  ],
+  [
+   0.0,
+   0.4
+  ],
+  [
+   0.0,
+   -0.4
+  ],
+  [
+   0.8,
+   0.0
+  ],
+  [
+   -0.8,
+   0.0
+  ],
+  [
+   0.0,
+   0.8
+  ],
+  [
+   0.0,
+   -0.8
+  ]
+ ],
+ "golden_sha256": "ba859ca72c6b742fcc6ba4916d8fcf12a326cdf020903b708d11fd2dfd0d455a",
+ "onnx_sha256": "742b8b40cbde37e1d349c7c1e65e083b266aadc8aef16d2f3be83846f97d9ddf",
+ "cross_validation": {
+  "folds": 5,
+  "split": "leave-boards-out",
+  "epochs": 20,
+  "missing_crops": 291,
+  "present_crops": 15103,
+  "missed_at_threshold": 1,
+  "false_calls_at_threshold": 1,
+  "good_photos_failing": "1/128",
+  "removed_photos_exact": "50/51",
+  "threshold": 0.35
+ },
+ "cross_validation_thorough": {
+  "rule": "median of 9 windows",
+  "threshold": 0.35,
+  "missed": "0/291",
+  "false_calls": "1/15103",
+  "good_photos_failing": "1/128",
+  "removed_photos_exact": "51/51",
+  "lowest_missing_score": 0.93,
+  "highest_present_score": 0.594
+ },
+ "proven_part_types": [
+  "R"
+ ],
+ "not_proven_part_types": [
+  "R2K2",
+  "C",
+  "C100N",
+  "D",
+  "D4148",
+  "Q",
+  "U"
+ ],
+ "note": "Only resistors have enough real removals (45 instances on 6 boards). The other part types have very few or no real missing examples."
+}

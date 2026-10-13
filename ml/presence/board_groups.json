@@ -1,0 +1,22 @@
+{
+  "what": "which photos show the same PHYSICAL board (found 2026-10-09 by ml/presence/checks/identity_all.py: high-pass solder/flux texture of the same slot correlates >= 0.87 within one board and <= 0.71 between boards, calibrated on the removed boards)",
+  "use": "split train / validation / test BY BOARD, never by photo: photos of one board are not independent",
+  "good_boards_red": {
+    "G01": ["R_01", "R_02", "R_03", "R_04", "R_05", "R_06", "R_07"],
+    "G02": ["R_08", "R_09", "R_10", "R_11", "R_12", "R_13", "R_14"],
+    "G03": ["R_15", "R_16", "R_17", "R_18", "R_19", "R_20", "R_21"],
+    "G04": ["R_22", "R_23", "R_24", "R_25", "R_26", "R_27", "R_28"],
+    "G05": ["R_29", "R_30", "R_31", "R_32", "R_33", "R_34", "R_35", "R_36", "R_37"],
+    "G06": ["R_38", "R_39", "R_40", "R_41", "R_42", "R_43"]
+  },
+  "removal_boards_red": {
+    "m_01": "folder data/presence/raw/red/removed/m_01 (R10, R36, R23, R26, R22 removed)",
+    "m_02": "folder data/presence/raw/red/removed/m_02 (R12, R28, R19, R34, R54, R38 removed)",
+    "m_03": "folder data/presence/raw/red/removed/m_03 (Q2, R45, R39, R27 removed)",
+    "m_04": "folder data/presence/raw/red/removed/m_04 (R29, R21, R51, Q9 removed)"
+  },
+  "no_good_photo_is_one_of_the_removal_boards": true,
+  "physical_boards_total": 10,
+  "fold_blocks_used_by_make_dataset_py": "R_01-11 / R_12-22 / R_23-33 / R_34-43: these blocks cut through G02, G04 and G05",
+  "note": "G01..G06 are names given here for the groups; the photos were never named by board"
+}

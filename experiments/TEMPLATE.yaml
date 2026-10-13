@@ -1,0 +1,67 @@
+# Experiment record template. Copy to experiments/EXP-<NNN>_<short-name>/record.yaml.
+# See docs/experiment_plan.md. Every field is mandatory: write null only where a
+# value genuinely does not apply, and explain why in `notes`. Never fill in
+# values that were not measured.
+
+experiment_id: null            # EXP-001
+title: null
+approach: null                 # reference_comparison | registration_reference | object_detection |
+                               # anomaly_detection | segmentation | hybrid | imaging_feasibility
+hypothesis: null
+owner: null
+date_started: null
+date_finished: null
+
+dataset:
+  version: null                # immutable dataset version identifier
+  split_file: null
+  boards:   {train: null, val: null, test: null}
+  captures: {train: null, val: null, test: null}
+  test_defect_instances: null  # per defect type, e.g. {missing_component: 12}
+
+code:
+  software_version: null       # package version or commit
+  config_file: null
+configuration: null            # full algorithm/model parameters, or a path to them
+reference_set: null            # golden / reference boards used, if any (train split only)
+
+hardware:
+  cpu: null
+  gpu: null
+  ram_gb: null
+  os: null
+
+results:                       # test split unless stated otherwise
+  board_level:
+    good_pass: null
+    good_review: null
+    good_fail: null            # false calls
+    defective_pass: null       # escapes
+    defective_review: null
+    defective_fail: null
+    escape_rate: {value: null, ci95: null}
+    false_call_rate: {value: null, ci95: null}
+    review_rate: null
+  defect_level:                # one entry per defect type
+    - defect_type: null
+      matching_rule: null      # e.g. same refdes + type, IoU >= 0.5
+      true_positives: null
+      false_positives: null
+      false_negatives: null
+      precision: null
+      recall: null
+      f1: null
+  localization:
+    metric: null               # mAP@0.5 | IoU | Dice | pixel_AUROC | AUPRO | position_error_mm
+    value: null
+  performance:
+    latency_ms: {p50: null, p95: null, max: null, cold_start: null}
+    cpu_percent: {mean: null, peak: null}
+    gpu_percent: {mean: null, peak: null}
+    gpu_memory_mb_peak: null
+    ram_mb_peak: null
+
+failure_cases: []              # [{capture_file, expected, predicted, category, note}]
+                               # categories: docs/experiment_plan.md section 3.7
+conclusion: null
+notes: null

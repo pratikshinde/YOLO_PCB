@@ -1,0 +1,32 @@
+{
+  "_what": "Corrections applied ON TOP of the user's *_missing.txt files (the text files themselves are never edited). Every entry was checked by eye on the 128x128 crops (empty pads vs part) on 2026-10-12. The user should confirm / fix the text files; until then these overrides win.",
+  "_rules": "ignore_tokens = tokens of the text file that are not one of the 86 part names (they are listed here on purpose, an unknown token that is NOT listed here stops the build). add_missing = parts that are really missing but not listed. remove_missing = listed but the part is clearly present.",
+  "boards": {
+    "m_01": {
+      "add_missing": ["C100N_8"],
+      "why": "C100N_8 pads are empty on m_01 (cap row, right end); not listed. m_07 is the same board continued and lists it as 'C8'."
+    },
+    "m_05": {
+      "add_missing": ["R59"],
+      "why": "R59 pads empty on all photos, not listed."
+    },
+    "m_07": {
+      "ignore_tokens": ["C8"],
+      "add_missing": ["R23", "C100N_8"],
+      "why": "m_07 is m_01 continued: R23 (removed on m_01) is still empty, not listed. 'C8' = C100N_8 (empty pads, seen on m_07 and m_01)."
+    },
+    "m_08": {
+      "ignore_tokens": ["R20", "D'4", "D'8"],
+      "add_missing": ["R28", "R38", "D4148_4", "D4148_8"],
+      "why": "m_08 is m_02 continued: R28 and R38 (removed on m_02) are still empty. There is no R20 on the board: typo for R28. D'4 / D'8 = D4148_4 / D4148_8 (the 4th and 8th diode of the unlabelled row are empty, the other six are present)."
+    },
+    "m_09": {
+      "add_missing": ["R40", "R48"],
+      "why": "m_09 is m_03 continued: R40 and R48 pads are empty, not listed (R48 was listed under m_10 by mistake)."
+    },
+    "m_10": {
+      "remove_missing": ["R48"],
+      "why": "R48 is clearly fitted on m_10 (resistor present on all photos); it belongs to m_09."
+    }
+  }
+}

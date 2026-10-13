@@ -1,0 +1,11 @@
+# Inspection rules of Pump Controller / variant_1: not defined. No defect type is enabled, so no inspection
+# result other than REVIEW is possible.
+
+defect_types: {}
+
+decision:
+  uncertainty_band: null
+  min_region_visible_fraction: null
+  max_plausible_defects: null
+  allow_good_with_unverified_regions: false
+  confidence: null
